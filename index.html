@@ -241,13 +241,25 @@
                   <li>
                     <a href="#get-specific-question-by-id" class="toc-h2 toc-link" data-title="Get specific question by ID.">Get specific question by ID.</a>
                   </li>
+                  <li>
+                    <a href="#generate-smiley-answers-links" class="toc-h2 toc-link" data-title="Generate smiley answers links">Generate smiley answers links</a>
+                  </li>
               </ul>
           </li>
           <li>
             <a href="#survey-results" class="toc-h1 toc-link" data-title="Survey Results">Survey Results</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#delete-specific-survey-result-by-id-or-contact-email" class="toc-h2 toc-link" data-title="Delete specific survey result by ID or contact email.">Delete specific survey result by ID or contact email.</a>
+                    <a href="#delete-specific-survey-result" class="toc-h2 toc-link" data-title="Delete specific survey result.">Delete specific survey result.</a>
+                  </li>
+                  <li>
+                    <a href="#delete-survey-result-by-id" class="toc-h2 toc-link" data-title="Delete survey result by id">Delete survey result by id</a>
+                  </li>
+                  <li>
+                    <a href="#delete-survey-results-by-array-of-ids" class="toc-h2 toc-link" data-title="Delete survey results by array of ids">Delete survey results by array of ids</a>
+                  </li>
+                  <li>
+                    <a href="#delete-survey-results-by-meta" class="toc-h2 toc-link" data-title="Delete survey results by meta">Delete survey results by meta</a>
                   </li>
               </ul>
           </li>
@@ -304,91 +316,51 @@ You must replace <code>u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</code> with the access t
   </span><span class="s2">"resources"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w"> 
       </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d0b985960a1da78cf8f4a57"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"translation"</span><span class="p">:</span><span class="w"> 
-        </span><span class="p">{</span><span class="w"> 
-          </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
-          </span><span class="s2">"de"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> 
-          </span><span class="s2">"ru"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"repellat"</span><span class="w"> </span><span class="p">},</span><span class="w">
       </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"consequuntur"</span><span class="w"> </span><span class="p">},</span><span class="w">
       </span><span class="s2">"urlName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"repellat"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-20T14:29:45.524Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-30T14:29:45.525Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"completeMsg"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"quasi"</span><span class="w"> </span><span class="p">},</span><span class="w">
       </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-20T14:29:45.538Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-20T14:29:45.538Z"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w"> 
        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d0b9859a1da78cf8f4a58"</span><span class="p">,</span><span class="w">
-       </span><span class="s2">"translation"</span><span class="p">:</span><span class="w"> 
-         </span><span class="p">{</span><span class="w"> 
-           </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
-           </span><span class="s2">"de"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> 
-           </span><span class="s2">"ru"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-         </span><span class="p">},</span><span class="w">
-       </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"qwerty"</span><span class="w"> </span><span class="p">},</span><span class="w">
        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sdf32324324"</span><span class="w"> </span><span class="p">},</span><span class="w">
        </span><span class="s2">"urlName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"qwerty"</span><span class="p">,</span><span class="w">
        </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-20T14:29:45.524Z"</span><span class="p">,</span><span class="w">
        </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-30T14:29:45.525Z"</span><span class="p">,</span><span class="w">
-       </span><span class="s2">"completeMsg"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"quasi"</span><span class="w"> </span><span class="p">},</span><span class="w">
        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-20T14:29:45.538Z"</span><span class="p">,</span><span class="w">
        </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-20T14:29:45.538Z"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d0b985960a1da78cf8f4a59"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"translation"</span><span class="p">:</span><span class="w"> 
-       </span><span class="p">{</span><span class="w"> 
-         </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
-         </span><span class="s2">"de"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> 
-         </span><span class="s2">"ru"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-       </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"testname"</span><span class="w"> </span><span class="p">},</span><span class="w">
       </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"consequuntur324"</span><span class="w"> </span><span class="p">},</span><span class="w">
       </span><span class="s2">"urlName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"testname"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-20T14:29:45.524Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-30T14:29:45.525Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"completeMsg"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"quasi"</span><span class="w"> </span><span class="p">},</span><span class="w">
       </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-20T14:29:45.538Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-20T14:29:45.538Z"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w"> 
       </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d0b985960a1da78cf8f4a60"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"translation"</span><span class="p">:</span><span class="w"> 
-       </span><span class="p">{</span><span class="w"> 
-         </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
-         </span><span class="s2">"de"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> 
-         </span><span class="s2">"ru"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-       </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bar"</span><span class="w"> </span><span class="p">},</span><span class="w">
       </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bar"</span><span class="w"> </span><span class="p">},</span><span class="w">
       </span><span class="s2">"urlName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bar desc"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-20T14:29:45.524Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-30T14:29:45.525Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"completeMsg"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"quasi"</span><span class="w"> </span><span class="p">},</span><span class="w">
       </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-20T14:29:45.538Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-20T14:29:45.538Z"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w"> 
       </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d0b985960a1da78cf8f4a61"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"translation"</span><span class="p">:</span><span class="w"> 
-       </span><span class="p">{</span><span class="w"> 
-         </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
-         </span><span class="s2">"de"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> 
-         </span><span class="s2">"ru"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-       </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo"</span><span class="w"> </span><span class="p">},</span><span class="w">
       </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo desc"</span><span class="w"> </span><span class="p">},</span><span class="w">
       </span><span class="s2">"urlName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-20T14:29:45.524Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-30T14:29:45.525Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"completeMsg"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"quasi"</span><span class="w"> </span><span class="p">},</span><span class="w">
       </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-20T14:29:45.538Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-20T14:29:45.538Z"</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -419,6 +391,13 @@ You must replace <code>u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</code> with the access t
 <td>10</td>
 <td>Yes</td>
 </tr>
+<tr>
+<td>sort</td>
+<td>string</td>
+<td>Sort parameter - name, createdAt, updatedAt</td>
+<td>createdAt</td>
+<td>No</td>
+</tr>
 </tbody></table>
 <h2 id='get-specific-survey-by-id-with-all-related-data'>Get specific survey by ID with all related data.</h2><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/surveys/5d0b985960a1da78cf8f4a57</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</span>
@@ -432,32 +411,19 @@ You must replace <code>u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</code> with the access t
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w"> 
   </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d0b985960a1da78cf8f4a57"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"translation"</span><span class="p">:</span><span class="w"> 
-    </span><span class="p">{</span><span class="w"> 
-      </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
-      </span><span class="s2">"de"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> 
-      </span><span class="s2">"ru"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"repellat"</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"consequuntur"</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="s2">"urlName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"repellat"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-20T14:29:45.524Z"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-30T14:29:45.525Z"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"completeMsg"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"quasi"</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-20T14:29:45.538Z"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-20T14:29:45.538Z"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"surveySections"</span><span class="p">:</span><span class="w"> 
     </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"_id"</span><span class="p">:</span><span class="s2">"5d1086759513bd03ca00a579"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"translationLockName"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"de"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"ru"</span><span class="p">:</span><span class="kc">false</span><span class="w"> </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"translationLockDescription"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"de"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"ru"</span><span class="p">:</span><span class="kc">false</span><span class="w"> </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"sortableId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s2">"displaySingle"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fugiat"</span><span class="w"> </span><span class="p">},</span><span class="w"> 
         </span><span class="s2">"survey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d1086759513bd03ca00a578"</span><span class="p">,</span><span class="w"> 
-        </span><span class="s2">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d1086749513bd03ca00a55c"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"team"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d1086759513bd03ca00a55d"</span><span class="p">,</span><span class="w"> 
         </span><span class="s2">"createdBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d1086759513bd03ca00a575"</span><span class="p">,</span><span class="w"> 
         </span><span class="s2">"updatedBy"</span><span class="p">:</span><span class="s2">"5d1086759513bd03ca00a575"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"surveyItems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -465,24 +431,13 @@ You must replace <code>u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</code> with the access t
             </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d1086759513bd03ca00a57a"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"question"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> 
-            </span><span class="s2">"sortableId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> 
             </span><span class="s2">"survey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d1086759513bd03ca00a578"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"surveySection"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d1086759513bd03ca00a579"</span><span class="p">,</span><span class="w"> 
-            </span><span class="s2">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d1086749513bd03ca00a55c"</span><span class="p">,</span><span class="w"> 
-            </span><span class="s2">"team"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d1086759513bd03ca00a55d"</span><span class="p">,</span><span class="w"> 
             </span><span class="s2">"question"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
               </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d1086759513bd03ca00a57b"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"linearScale"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"from"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s2">"to"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="s2">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"smile"</span><span class="w"> </span><span class="p">},</span><span class="w">
-              </span><span class="s2">"configuration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"multiple"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"align"</span><span class="p">:</span><span class="w"> </span><span class="s2">"center"</span><span class="w"> </span><span class="p">},</span><span class="w">
-              </span><span class="s2">"translation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="s2">"de"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="s2">"ru"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">},</span><span class="w">
-              </span><span class="s2">"translationLockName"</span><span class="p">:{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="s2">"de"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"ru"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">},</span><span class="w">
-              </span><span class="s2">"translationLockDescription"</span><span class="p">:{</span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="s2">"de"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="s2">"ru"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">},</span><span class="w">
-              </span><span class="s2">"general"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"trend"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> 
+              </span><span class="s2">"linearScale"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"from"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s2">"to"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="s2">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"smiley"</span><span class="w"> </span><span class="p">},</span><span class="w">
               </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linearScale"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cupiditate"</span><span class="w"> </span><span class="p">},</span><span class="w">
-              </span><span class="s2">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d1086749513bd03ca00a55c"</span><span class="p">,</span><span class="w"> 
-              </span><span class="s2">"team"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d1086759513bd03ca00a55d"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"createdBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d1086759513bd03ca00a575"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"updatedBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d1086759513bd03ca00a575"</span><span class="w">
             </span><span class="p">}</span><span class="w">
@@ -519,26 +474,54 @@ You must replace <code>u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</code> with the access t
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w"> 
   </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d10840f5b4ca0038509890c"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"translation"</span><span class="p">:</span><span class="w"> 
-    </span><span class="p">{</span><span class="w"> 
-      </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
-      </span><span class="s2">"de"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> 
-      </span><span class="s2">"ru"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-     </span><span class="p">},</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iste"</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"linearScale"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"from"</span><span class="p">:</span><span class="w">  </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s2">"to"</span><span class="p">:</span><span class="w">  </span><span class="mi">5</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-24T08:04:31.303Z"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-24T08:04:31.303Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h1 id='survey-results'>Survey Results</h1><h2 id='delete-specific-survey-result-by-id-or-contact-email'>Delete specific survey result by ID or contact email.</h2><pre class="highlight http tab-http"><code><span class="nf">DELETE</span> <span class="nn">/api/v2/survey-results/5d10840f5b4ca0038509890c</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</span></code></pre><h2 id='generate-smiley-answers-links'>Generate smiley answers links</h2>
+<blockquote>
+<p>Generate specific links from answering to smiley-type question from email</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/api/v2/surveys/5d10840f5b4ca0038509890c/generate-links</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">https://go.screver.com</span>
-</code></pre>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"questionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d10840f5b4ca0038509890c"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"emailsArray"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"example1@email.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"example2@email.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"example3@email.com"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <blockquote>
 <p>The above request returns the following response:</p>
 </blockquote>
-<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No content</span>
-</code></pre><h3 id='query-parameters-3'>Query Parameters</h3>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example1@email.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"links"</span><span class="p">:</span><span class="w">
+     </span><span class="p">[</span><span class="w"> </span><span class="s2">"http://go.screver.com/survey?token=4f207be5-a00b-4493-bb39-873db282c614?questionId=5d43dc66faa7521f1730ee7e?value=1"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"http://go.screver.com/survey?token=4f207be5-a00b-4493-bb39-873db282c614?questionId=5d43dc66faa7521f1730ee7e?value=2"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"http://go.screver.com/survey?token=4f207be5-a00b-4493-bb39-873db282c614?questionId=5d43dc66faa7521f1730ee7e?value=3"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"http://go.screver.com/survey?token=4f207be5-a00b-4493-bb39-873db282c614?questionId=5d43dc66faa7521f1730ee7e?value=4"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"http://go.screver.com/survey?token=4f207be5-a00b-4493-bb39-873db282c614?questionId=5d43dc66faa7521f1730ee7e?value=5"</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w"> </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example2@email.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"links"</span><span class="p">:</span><span class="w">
+     </span><span class="p">[</span><span class="w"> </span><span class="s2">"http://go.screver.com/survey?token=2b69e181-3a16-415a-94f4-0aaa2544cd2e?questionId=5d43dc66faa7521f1730ee7e?value=1"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"http://go.screver.com/survey?token=2b69e181-3a16-415a-94f4-0aaa2544cd2e?questionId=5d43dc66faa7521f1730ee7e?value=2"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"http://go.screver.com/survey?token=2b69e181-3a16-415a-94f4-0aaa2544cd2e?questionId=5d43dc66faa7521f1730ee7e?value=3"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"http://go.screver.com/survey?token=2b69e181-3a16-415a-94f4-0aaa2544cd2e?questionId=5d43dc66faa7521f1730ee7e?value=4"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"http://go.screver.com/survey?token=2b69e181-3a16-415a-94f4-0aaa2544cd2e?questionId=5d43dc66faa7521f1730ee7e?value=5"</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w"> </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example3@email.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"links"</span><span class="p">:</span><span class="w">
+     </span><span class="p">[</span><span class="w"> </span><span class="s2">"http://go.screver.com/survey?token=92bf5361-90ae-47f9-bc67-66d0af776f5a?questionId=5d43dc66faa7521f1730ee7e?value=1"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"http://go.screver.com/survey?token=92bf5361-90ae-47f9-bc67-66d0af776f5a?questionId=5d43dc66faa7521f1730ee7e?value=2"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"http://go.screver.com/survey?token=92bf5361-90ae-47f9-bc67-66d0af776f5a?questionId=5d43dc66faa7521f1730ee7e?value=3"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"http://go.screver.com/survey?token=92bf5361-90ae-47f9-bc67-66d0af776f5a?questionId=5d43dc66faa7521f1730ee7e?value=4"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"http://go.screver.com/survey?token=92bf5361-90ae-47f9-bc67-66d0af776f5a?questionId=5d43dc66faa7521f1730ee7e?value=5"</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span></code></pre><h3 id='query-parameters-3'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -548,7 +531,128 @@ You must replace <code>u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</code> with the access t
 </tr>
 </thead><tbody>
 <tr>
-<td>id</td>
+<td>questionId</td>
+<td>objectId</td>
+<td>ObjectId of specific smiley question in survey.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>emailsArray</td>
+<td>array</td>
+<td>Array of emails of contact.</td>
+<td>Yes</td>
+</tr>
+</tbody></table>
+<h1 id='survey-results'>Survey Results</h1><h2 id='delete-specific-survey-result'>Delete specific survey result.</h2>
+<blockquote>
+<p>Delete survey result by user ID or contact email which stored in survey result meta data.</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="nf">DELETE</span> <span class="nn">/api/v2/survey-results/remove-one</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">https://go.screver.com</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123123"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>The above request returns the following response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No content</span>
+</code></pre><h3 id='query-parameters-4'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>userId</td>
+<td>objectId</td>
+<td>ObjectId of specific survey.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>Email of contact.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h2 id='delete-survey-result-by-id'>Delete survey result by id</h2>
+<blockquote>
+<p>Delete survey result by ID</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="nf">DELETE</span> <span class="nn">/api/v2/survey-results/5d10840f5b4ca0038509890c</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">https://go.screver.com</span>
+</code></pre>
+<blockquote>
+<p>The above request returns the following response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No content</span>
+</code></pre><h2 id='delete-survey-results-by-array-of-ids'>Delete survey results by array of ids</h2>
+<blockquote>
+<p>Delete survey results by array of ids</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="nf">DELETE</span> <span class="nn">/api/v2/survey-results/remove-array</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">https://go.screver.com</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"idsArray"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"5d10840f5b4ca0038509890c"</span><span class="p">,</span><span class="w"> </span><span class="s2">"5d10840f5b4ca0038509465r"</span><span class="p">,</span><span class="w"> </span><span class="s2">"5d10840f5b4ca0038509978x"</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>The above request returns the following response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No content</span>
+</code></pre><h3 id='query-parameters-5'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>idsArray</td>
+<td>array</td>
+<td>Array of ObjectIds.</td>
+<td>Yes</td>
+</tr>
+</tbody></table>
+<h2 id='delete-survey-results-by-meta'>Delete survey results by meta</h2>
+<blockquote>
+<p>Delete survey results by user ID or contact email which stored in survey result meta data.</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="nf">DELETE</span> <span class="nn">/api/v2/survey-results/remove-by-meta</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">https://go.screver.com</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123123"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>The above request returns the following response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No content</span>
+</code></pre><h3 id='query-parameters-6'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>userId</td>
 <td>objectId</td>
 <td>ObjectId of specific survey.</td>
 <td>No</td>
