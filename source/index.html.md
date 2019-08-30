@@ -310,37 +310,6 @@ surveyItemId |objectId| ObjectId of specific smiley survey item in survey.| Yes 
 emailsArray |array| Array of emails of contact.| Yes |
 
 # Survey Results
-## Delete specific survey result.
-> Delete survey by meta stored in survey result.
-
-```http
-DELETE /api/v2/survey-results/remove-one HTTP/1.1
-Authorization: Bearer u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3
-Content-Type: application/json
-Host: https://go.screver.com
-```
-
-```json
-{
-  "meta" : {
-    "userId": "123123"
-  }
-}
-```
-
-> The above request returns the following response:
-
-```http
-HTTP/1.1 204 No content
-```
-
-### Query Parameters
-
-Parameter | Type | Description | Required |
---------- | ------- | ----------- | -------- |
-meta |Object| ObjectId of meta data.| No |
-
-
 ## Delete survey result by id
 > Delete survey result by ID
 
