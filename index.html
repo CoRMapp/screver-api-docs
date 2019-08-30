@@ -250,9 +250,6 @@
             <a href="#survey-results" class="toc-h1 toc-link" data-title="Survey Results">Survey Results</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#delete-specific-survey-result" class="toc-h2 toc-link" data-title="Delete specific survey result.">Delete specific survey result.</a>
-                  </li>
-                  <li>
                     <a href="#delete-survey-result-by-id" class="toc-h2 toc-link" data-title="Delete survey result by id">Delete survey result by id</a>
                   </li>
                   <li>
@@ -581,41 +578,7 @@ Each link include:
 <td>Yes</td>
 </tr>
 </tbody></table>
-<h1 id='survey-results'>Survey Results</h1><h2 id='delete-specific-survey-result'>Delete specific survey result.</h2>
-<blockquote>
-<p>Delete survey by meta stored in survey result.</p>
-</blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">DELETE</span> <span class="nn">/api/v2/survey-results/remove-one</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</span>
-<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">https://go.screver.com</span>
-</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123123"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<blockquote>
-<p>The above request returns the following response:</p>
-</blockquote>
-<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No content</span>
-</code></pre><h3 id='query-parameters-5'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-<th>Required</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>meta</td>
-<td>Object</td>
-<td>ObjectId of meta data.</td>
-<td>No</td>
-</tr>
-</tbody></table>
-<h2 id='delete-survey-result-by-id'>Delete survey result by id</h2>
+<h1 id='survey-results'>Survey Results</h1><h2 id='delete-survey-result-by-id'>Delete survey result by id</h2>
 <blockquote>
 <p>Delete survey result by ID</p>
 </blockquote>
@@ -644,7 +607,7 @@ Each link include:
 <p>The above request returns the following response:</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No content</span>
-</code></pre><h3 id='query-parameters-6'>Query Parameters</h3>
+</code></pre><h3 id='query-parameters-5'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -678,7 +641,7 @@ Each link include:
 <p>The above request returns the following response:</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No content</span>
-</code></pre><h3 id='query-parameters-7'>Query Parameters</h3>
+</code></pre><h3 id='query-parameters-6'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
