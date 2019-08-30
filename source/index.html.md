@@ -224,7 +224,13 @@ Content-Type: application/json
 ```
 
 ## Generate smiley answers links
-> Generate specific links from answering to smiley-type question from email
+> Generate specific links from answering to smiley-type question from email.
+> After sending array of emails, system create invite by each email and return generated links
+> by answering from email.
+> Each link include: 
+> - token - unique invite token, 
+> - surveyItem - id of entity related with question, use from answering
+> - value - answer value by each smiley
 
 ```http
 POST /api/v2/surveys/5d10840f5b4ca0038509890c/generate-links HTTP/1.1
@@ -253,25 +259,25 @@ HTTP/1.1 200 OK
 ```json
 [ { "email": "example1@email.com",
     "links":
-     [ "http://go.screver.com/survey?token=4f207be5-a00b-4493-bb39-873db282c614?questionId=5d43dc66faa7521f1730ee7e?value=1",
-       "http://go.screver.com/survey?token=4f207be5-a00b-4493-bb39-873db282c614?questionId=5d43dc66faa7521f1730ee7e?value=2",
-       "http://go.screver.com/survey?token=4f207be5-a00b-4493-bb39-873db282c614?questionId=5d43dc66faa7521f1730ee7e?value=3",
-       "http://go.screver.com/survey?token=4f207be5-a00b-4493-bb39-873db282c614?questionId=5d43dc66faa7521f1730ee7e?value=4",
-       "http://go.screver.com/survey?token=4f207be5-a00b-4493-bb39-873db282c614?questionId=5d43dc66faa7521f1730ee7e?value=5" ] },
+     [ "http://go.screver.com/survey?token=4f207be5-a00b-4493-bb39-873db282c614?surveyItem=5d43dc66faa7521f1730ee7e?value=1",
+       "http://go.screver.com/survey?token=4f207be5-a00b-4493-bb39-873db282c614?surveyItem=5d43dc66faa7521f1730ee7e?value=2",
+       "http://go.screver.com/survey?token=4f207be5-a00b-4493-bb39-873db282c614?surveyItem=5d43dc66faa7521f1730ee7e?value=3",
+       "http://go.screver.com/survey?token=4f207be5-a00b-4493-bb39-873db282c614?surveyItem=5d43dc66faa7521f1730ee7e?value=4",
+       "http://go.screver.com/survey?token=4f207be5-a00b-4493-bb39-873db282c614?surveyItem=5d43dc66faa7521f1730ee7e?value=5" ] },
   { "email": "example2@email.com",
     "links":
-     [ "http://go.screver.com/survey?token=2b69e181-3a16-415a-94f4-0aaa2544cd2e?questionId=5d43dc66faa7521f1730ee7e?value=1",
-       "http://go.screver.com/survey?token=2b69e181-3a16-415a-94f4-0aaa2544cd2e?questionId=5d43dc66faa7521f1730ee7e?value=2",
-       "http://go.screver.com/survey?token=2b69e181-3a16-415a-94f4-0aaa2544cd2e?questionId=5d43dc66faa7521f1730ee7e?value=3",
-       "http://go.screver.com/survey?token=2b69e181-3a16-415a-94f4-0aaa2544cd2e?questionId=5d43dc66faa7521f1730ee7e?value=4",
-       "http://go.screver.com/survey?token=2b69e181-3a16-415a-94f4-0aaa2544cd2e?questionId=5d43dc66faa7521f1730ee7e?value=5" ] },
+     [ "http://go.screver.com/survey?token=2b69e181-3a16-415a-94f4-0aaa2544cd2e?surveyItem=5d43dc66faa7521f1730ee7e?value=1",
+       "http://go.screver.com/survey?token=2b69e181-3a16-415a-94f4-0aaa2544cd2e?surveyItem=5d43dc66faa7521f1730ee7e?value=2",
+       "http://go.screver.com/survey?token=2b69e181-3a16-415a-94f4-0aaa2544cd2e?surveyItem=5d43dc66faa7521f1730ee7e?value=3",
+       "http://go.screver.com/survey?token=2b69e181-3a16-415a-94f4-0aaa2544cd2e?surveyItem=5d43dc66faa7521f1730ee7e?value=4",
+       "http://go.screver.com/survey?token=2b69e181-3a16-415a-94f4-0aaa2544cd2e?surveyItem=5d43dc66faa7521f1730ee7e?value=5" ] },
   { "email": "example3@email.com",
     "links":
-     [ "http://go.screver.com/survey?token=92bf5361-90ae-47f9-bc67-66d0af776f5a?questionId=5d43dc66faa7521f1730ee7e?value=1",
-       "http://go.screver.com/survey?token=92bf5361-90ae-47f9-bc67-66d0af776f5a?questionId=5d43dc66faa7521f1730ee7e?value=2",
-       "http://go.screver.com/survey?token=92bf5361-90ae-47f9-bc67-66d0af776f5a?questionId=5d43dc66faa7521f1730ee7e?value=3",
-       "http://go.screver.com/survey?token=92bf5361-90ae-47f9-bc67-66d0af776f5a?questionId=5d43dc66faa7521f1730ee7e?value=4",
-       "http://go.screver.com/survey?token=92bf5361-90ae-47f9-bc67-66d0af776f5a?questionId=5d43dc66faa7521f1730ee7e?value=5" ] } ]
+     [ "http://go.screver.com/survey?token=92bf5361-90ae-47f9-bc67-66d0af776f5a?surveyItem=5d43dc66faa7521f1730ee7e?value=1",
+       "http://go.screver.com/survey?token=92bf5361-90ae-47f9-bc67-66d0af776f5a?surveyItem=5d43dc66faa7521f1730ee7e?value=2",
+       "http://go.screver.com/survey?token=92bf5361-90ae-47f9-bc67-66d0af776f5a?surveyItem=5d43dc66faa7521f1730ee7e?value=3",
+       "http://go.screver.com/survey?token=92bf5361-90ae-47f9-bc67-66d0af776f5a?surveyItem=5d43dc66faa7521f1730ee7e?value=4",
+       "http://go.screver.com/survey?token=92bf5361-90ae-47f9-bc67-66d0af776f5a?surveyItem=5d43dc66faa7521f1730ee7e?value=5" ] } ]
 ```
 
 ### Query Parameters
@@ -283,7 +289,7 @@ emailsArray |array| Array of emails of contact.| Yes |
 
 # Survey Results
 ## Delete specific survey result.
-> Delete survey result by user ID or contact email which stored in survey result meta data.
+> Delete survey by meta stored in survey result.
 
 ```http
 DELETE /api/v2/survey-results/remove-one HTTP/1.1
@@ -294,7 +300,9 @@ Host: https://go.screver.com
 
 ```json
 {
-  "userId": "123123"
+  "meta" : {
+    "userId": "123123"
+  }
 }
 ```
 
@@ -308,8 +316,8 @@ HTTP/1.1 204 No content
 
 Parameter | Type | Description | Required |
 --------- | ------- | ----------- | -------- |
-userId |objectId| ObjectId of specific survey.| No |
-email |string| Email of contact.| No |
+meta |Object| ObjectId of meta data.| No |
+
 
 ## Delete survey result by id
 > Delete survey result by ID
@@ -356,7 +364,7 @@ Parameter | Type | Description | Required |
 idsArray |array| Array of ObjectIds.| Yes |
 
 ## Delete survey results by meta
-> Delete survey results by user ID or contact email which stored in survey result meta data.
+> Delete survey results by meta stored in survey result.
 
 ```http
 DELETE /api/v2/survey-results/remove-by-meta HTTP/1.1
@@ -367,7 +375,9 @@ Host: https://go.screver.com
 
 ```json
 {
-  "userId": "123123"
+  "meta": {
+    "userId": "123123"
+  }
 }
 ```
 
@@ -381,5 +391,4 @@ HTTP/1.1 204 No content
 
 Parameter | Type | Description | Required |
 --------- | ------- | ----------- | -------- |
-userId |objectId| ObjectId of specific survey.| No |
-email |string| Email of contact.| No |
+meta |Object| ObjectId of meta data.| No |
