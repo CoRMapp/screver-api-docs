@@ -73,6 +73,7 @@ Content-Type: application/json
   "resources": [
     { 
       "_id": "5d0b985960a1da78cf8f4a57",
+      "translation": { "en": true, "de": false, "ru": false, "nl": false },
       "name": { "en": "repellat" },
       "description": { "en": "consequuntur" },
       "urlName": "repellat",
@@ -83,6 +84,7 @@ Content-Type: application/json
     },
     { 
        "_id": "5d0b9859a1da78cf8f4a58",
+       "translation": { "en": true, "de": false, "ru": false, "nl": false },
        "name": { "en": "qwerty" },
        "description": { "en": "sdf32324324" },
        "urlName": "qwerty",
@@ -93,6 +95,7 @@ Content-Type: application/json
     },
     {
       "_id": "5d0b985960a1da78cf8f4a59",
+      "translation": { "en": true, "de": false, "ru": false, "nl": false },
       "name": { "en": "testname" },
       "description": { "en": "consequuntur324" },
       "urlName": "testname",
@@ -103,6 +106,7 @@ Content-Type: application/json
     },
     { 
       "_id": "5d0b985960a1da78cf8f4a60",
+      "translation": { "en": true, "de": false, "ru": false, "nl": false },
       "name": { "en": "bar" },
       "description": { "en": "bar" },
       "urlName": "bar desc",
@@ -113,6 +117,7 @@ Content-Type: application/json
     },
     { 
       "_id": "5d0b985960a1da78cf8f4a61",
+      "translation": { "en": true, "de": false, "ru": false, "nl": false },
       "name": { "en": "foo" },
       "description": { "en": "foo desc" },
       "urlName": "foo",
@@ -153,6 +158,7 @@ Content-Type: application/json
 ```json
 { 
   "_id": "5d0b985960a1da78cf8f4a57",
+  "translation": { "en": true, "de": false, "ru": false, "nl": false },
   "name": { "en": "repellat" },
   "description": { "en": "consequuntur" },
   "urlName": "repellat",
@@ -177,6 +183,7 @@ Content-Type: application/json
             "surveySection": "5d1086759513bd03ca00a579", 
             "question": {
               "_id": "5d1086759513bd03ca00a57b",
+              "translation": { "en": true, "de": false, "ru": false, "nl": false },
               "linearScale": { "from": 1, "to": 5, "icon": "smiley" },
               "type": "linearScale",
               "name": { "en": "cupiditate" },
@@ -196,11 +203,11 @@ Parameter | Type | Description | Required |
 --------- | ------- | ----------- | -------- |
 id |objectId| ObjectId of specific survey.| Yes |
 
-# Questions
-## Get specific question by ID.
+# Survey Items
+## Get specific survey item by ID.
 
 ```http
-GET /api/v2/questions/5d0b985960a1da78cf8f4a57 HTTP/1.1
+GET /api/v2/survey-items/5d0b985960a1da78cf8f4a57 HTTP/1.1
 Authorization: Bearer u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3
 Content-Type: application/json
 Host: https://go.screver.com
@@ -214,14 +221,29 @@ Content-Type: application/json
 ```
 
 ```json
-{ 
-  "_id": "5d10840f5b4ca0038509890c",
-  "name": { "en": "iste" },
-  "linearScale": { "from":  1, "to":  5 },
-  "createdAt": "2019-06-24T08:04:31.303Z",
-  "updatedAt": "2019-06-24T08:04:31.303Z"
+{
+  "_id": "5d1086759513bd03ca00a57a",
+  "type": "question",
+  "required": false, 
+  "survey": "5d1086759513bd03ca00a578",
+  "surveySection": "5d1086759513bd03ca00a579", 
+  "question": {
+    "_id": "5d1086759513bd03ca00a57b",
+    "translation": { "en": true, "de": false, "ru": false, "nl": false },
+    "linearScale": { "from": 1, "to": 5, "icon": "smiley" },
+    "type": "linearScale",
+    "name": { "en": "cupiditate" },
+    "createdBy": "5d1086759513bd03ca00a575",
+    "updatedBy": "5d1086759513bd03ca00a575"
+  }
 }
 ```
+
+### Query Parameters
+
+Parameter | Type | Description | Required |
+--------- | ------- | ----------- | -------- |
+id |objectId| ObjectId of specific survey item.| Yes |
 
 ## Generate smiley answers links
 > Generate specific links from answering to smiley-type question from email.
@@ -241,7 +263,7 @@ Host: https://go.screver.com
 
 ```json
 {
-    "questionId": "5d10840f5b4ca0038509890c",
+    "surveyItemId": "5d10840f5b4ca0038509890c",
     "emailsArray": [
       "example1@email.com",
       "example2@email.com",
@@ -284,7 +306,7 @@ HTTP/1.1 200 OK
 
 Parameter | Type | Description | Required |
 --------- | ------- | ----------- | -------- |
-questionId |objectId| ObjectId of specific smiley question in survey.| Yes |
+surveyItemId |objectId| ObjectId of specific smiley survey item in survey.| Yes |
 emailsArray |array| Array of emails of contact.| Yes |
 
 # Survey Results
