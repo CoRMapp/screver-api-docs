@@ -236,22 +236,19 @@
               </ul>
           </li>
           <li>
-            <a href="#questions" class="toc-h1 toc-link" data-title="Questions">Questions</a>
+            <a href="#survey-items" class="toc-h1 toc-link" data-title="Survey Items">Survey Items</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-specific-question-by-id" class="toc-h2 toc-link" data-title="Get specific question by ID.">Get specific question by ID.</a>
+                    <a href="#get-specific-survey-item-by-id" class="toc-h2 toc-link" data-title="Get specific survey item by ID.">Get specific survey item by ID.</a>
                   </li>
                   <li>
-                    <a href="#generate-smiley-answers-links" class="toc-h2 toc-link" data-title="Generate smiley answers links">Generate smiley answers links</a>
+                    <a href="#generate-answers-links" class="toc-h2 toc-link" data-title="Generate answers links">Generate answers links</a>
                   </li>
               </ul>
           </li>
           <li>
             <a href="#survey-results" class="toc-h1 toc-link" data-title="Survey Results">Survey Results</a>
               <ul class="toc-list-h2">
-                  <li>
-                    <a href="#delete-specific-survey-result" class="toc-h2 toc-link" data-title="Delete specific survey result.">Delete specific survey result.</a>
-                  </li>
                   <li>
                     <a href="#delete-survey-result-by-id" class="toc-h2 toc-link" data-title="Delete survey result by id">Delete survey result by id</a>
                   </li>
@@ -273,7 +270,7 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>This is initial go.screver.com API documentation. </p>
+<p>This is initial go.screver.com API documentation.</p>
 <h1 id='authentication'>Authentication</h1>
 <blockquote>
 <p>To get an access token, send the following request:</p>
@@ -293,8 +290,8 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>To allow access to the API use access token.
-An OAuth client credentials request is used to obtain a token. 
-To get your OAuth <code>client id</code> and <code>client secret</code> please contact us. 
+An OAuth client credentials request is used to obtain a token.
+To get your OAuth <code>client id</code> and <code>client secret</code> please contact us.
 The token can be used 24h.</p>
 
 <p><code>Authorization: Bearer u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</code></p>
@@ -314,8 +311,9 @@ You must replace <code>u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</code> with the access t
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"resources"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w"> 
+    </span><span class="p">{</span><span class="w">
       </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d0b985960a1da78cf8f4a57"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"translation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="s2">"de"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"ru"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"nl"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">},</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"repellat"</span><span class="w"> </span><span class="p">},</span><span class="w">
       </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"consequuntur"</span><span class="w"> </span><span class="p">},</span><span class="w">
       </span><span class="s2">"urlName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"repellat"</span><span class="p">,</span><span class="w">
@@ -324,8 +322,9 @@ You must replace <code>u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</code> with the access t
       </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-20T14:29:45.538Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-20T14:29:45.538Z"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w"> 
+    </span><span class="p">{</span><span class="w">
        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d0b9859a1da78cf8f4a58"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"translation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="s2">"de"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"ru"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"nl"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">},</span><span class="w">
        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"qwerty"</span><span class="w"> </span><span class="p">},</span><span class="w">
        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sdf32324324"</span><span class="w"> </span><span class="p">},</span><span class="w">
        </span><span class="s2">"urlName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"qwerty"</span><span class="p">,</span><span class="w">
@@ -336,6 +335,7 @@ You must replace <code>u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</code> with the access t
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d0b985960a1da78cf8f4a59"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"translation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="s2">"de"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"ru"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"nl"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">},</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"testname"</span><span class="w"> </span><span class="p">},</span><span class="w">
       </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"consequuntur324"</span><span class="w"> </span><span class="p">},</span><span class="w">
       </span><span class="s2">"urlName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"testname"</span><span class="p">,</span><span class="w">
@@ -344,8 +344,9 @@ You must replace <code>u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</code> with the access t
       </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-20T14:29:45.538Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-20T14:29:45.538Z"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w"> 
+    </span><span class="p">{</span><span class="w">
       </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d0b985960a1da78cf8f4a60"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"translation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="s2">"de"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"ru"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"nl"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">},</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bar"</span><span class="w"> </span><span class="p">},</span><span class="w">
       </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bar"</span><span class="w"> </span><span class="p">},</span><span class="w">
       </span><span class="s2">"urlName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bar desc"</span><span class="p">,</span><span class="w">
@@ -354,8 +355,9 @@ You must replace <code>u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</code> with the access t
       </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-20T14:29:45.538Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-20T14:29:45.538Z"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w"> 
+    </span><span class="p">{</span><span class="w">
       </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d0b985960a1da78cf8f4a61"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"translation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="s2">"de"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"ru"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"nl"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">},</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo"</span><span class="w"> </span><span class="p">},</span><span class="w">
       </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo desc"</span><span class="w"> </span><span class="p">},</span><span class="w">
       </span><span class="s2">"urlName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo"</span><span class="p">,</span><span class="w">
@@ -409,8 +411,9 @@ You must replace <code>u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</code> with the access t
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
-</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w"> 
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d0b985960a1da78cf8f4a57"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"translation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="s2">"de"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"ru"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"nl"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"repellat"</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"consequuntur"</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="s2">"urlName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"repellat"</span><span class="p">,</span><span class="w">
@@ -418,23 +421,24 @@ You must replace <code>u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</code> with the access t
   </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-30T14:29:45.525Z"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-20T14:29:45.538Z"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-20T14:29:45.538Z"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"surveySections"</span><span class="p">:</span><span class="w"> 
+  </span><span class="s2">"surveySections"</span><span class="p">:</span><span class="w">
     </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"_id"</span><span class="p">:</span><span class="s2">"5d1086759513bd03ca00a579"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fugiat"</span><span class="w"> </span><span class="p">},</span><span class="w"> 
-        </span><span class="s2">"survey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d1086759513bd03ca00a578"</span><span class="p">,</span><span class="w"> 
-        </span><span class="s2">"createdBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d1086759513bd03ca00a575"</span><span class="p">,</span><span class="w"> 
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fugiat"</span><span class="w"> </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"survey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d1086759513bd03ca00a578"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"createdBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d1086759513bd03ca00a575"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"updatedBy"</span><span class="p">:</span><span class="s2">"5d1086759513bd03ca00a575"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"surveyItems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d1086759513bd03ca00a57a"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"question"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> 
+            </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
             </span><span class="s2">"survey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d1086759513bd03ca00a578"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"surveySection"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d1086759513bd03ca00a579"</span><span class="p">,</span><span class="w"> 
+            </span><span class="s2">"surveySection"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d1086759513bd03ca00a579"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"question"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
               </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d1086759513bd03ca00a57b"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"translation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="s2">"de"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"ru"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"nl"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">},</span><span class="w">
               </span><span class="s2">"linearScale"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"from"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s2">"to"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="s2">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"smiley"</span><span class="w"> </span><span class="p">},</span><span class="w">
               </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linearScale"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cupiditate"</span><span class="w"> </span><span class="p">},</span><span class="w">
@@ -462,7 +466,7 @@ You must replace <code>u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</code> with the access t
 <td>Yes</td>
 </tr>
 </tbody></table>
-<h1 id='questions'>Questions</h1><h2 id='get-specific-question-by-id'>Get specific question by ID.</h2><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/questions/5d0b985960a1da78cf8f4a57</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<h1 id='survey-items'>Survey Items</h1><h2 id='get-specific-survey-item-by-id'>Get specific survey item by ID.</h2><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/survey-items/5d0b985960a1da78cf8f4a57</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">https://go.screver.com</span>
@@ -472,34 +476,59 @@ You must replace <code>u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</code> with the access t
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
-</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w"> 
-  </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d10840f5b4ca0038509890c"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iste"</span><span class="w"> </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"linearScale"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"from"</span><span class="p">:</span><span class="w">  </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s2">"to"</span><span class="p">:</span><span class="w">  </span><span class="mi">5</span><span class="w"> </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-24T08:04:31.303Z"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-24T08:04:31.303Z"</span><span class="w">
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d1086759513bd03ca00a57a"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"question"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"survey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d1086759513bd03ca00a578"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"surveySection"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d1086759513bd03ca00a579"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"question"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d1086759513bd03ca00a57b"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"translation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="s2">"de"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"ru"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"nl"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"linearScale"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"from"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s2">"to"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="s2">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"smiley"</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linearScale"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cupiditate"</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"createdBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d1086759513bd03ca00a575"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updatedBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d1086759513bd03ca00a575"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='generate-smiley-answers-links'>Generate smiley answers links</h2>
+</span></code></pre><h3 id='query-parameters-3'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>objectId</td>
+<td>ObjectId of specific survey item.</td>
+<td>Yes</td>
+</tr>
+</tbody></table>
+<h2 id='generate-answers-links'>Generate answers links</h2>
 <blockquote>
 <p>Generate specific links from answering to smiley-type question from email.
-After sending array of emails, system create invite by each email and return generated links
+After sending array of invitations, system would create invite by each email and return generated links
 by answering from email.
-Each link include: 
-- token - unique invite token, 
+Each link include:
+- token - unique invite token,
 - surveyItem - id of entity related with question, use from answering
 - value - answer value by each smiley</p>
 </blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/api/v2/surveys/5d10840f5b4ca0038509890c/generate-links</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/api/v2/survey-items/5d10840f5b4ca0038509890c/generate-links</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">https://go.screver.com</span>
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"questionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d10840f5b4ca0038509890c"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"emailsArray"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"example1@email.com"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"example2@email.com"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"example3@email.com"</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+    </span><span class="s2">"invitations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w"> </span><span class="err">email</span><span class="p">:</span><span class="w"> </span><span class="err">'example</span><span class="mi">1</span><span class="err">@email.com'</span><span class="p">,</span><span class="w"> </span><span class="err">meta</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">userId</span><span class="p">:</span><span class="w"> </span><span class="err">'user</span><span class="mi">1</span><span class="err">'</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w"> </span><span class="err">email</span><span class="p">:</span><span class="w"> </span><span class="err">'example</span><span class="mi">2</span><span class="err">@email.com'</span><span class="p">,</span><span class="w"> </span><span class="err">meta</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">userId</span><span class="p">:</span><span class="w"> </span><span class="err">'user</span><span class="mi">2</span><span class="err">'</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w"> </span><span class="err">email</span><span class="p">:</span><span class="w"> </span><span class="err">'example</span><span class="mi">3</span><span class="err">@email.com'</span><span class="p">,</span><span class="w"> </span><span class="err">meta</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">userId</span><span class="p">:</span><span class="w"> </span><span class="err">'user</span><span class="mi">3</span><span class="err">'</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"ttl"</span><span class="p">:</span><span class="w"> </span><span class="mi">86400000</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
@@ -527,7 +556,7 @@ Each link include:
        </span><span class="s2">"http://go.screver.com/survey?token=92bf5361-90ae-47f9-bc67-66d0af776f5a?surveyItem=5d43dc66faa7521f1730ee7e?value=3"</span><span class="p">,</span><span class="w">
        </span><span class="s2">"http://go.screver.com/survey?token=92bf5361-90ae-47f9-bc67-66d0af776f5a?surveyItem=5d43dc66faa7521f1730ee7e?value=4"</span><span class="p">,</span><span class="w">
        </span><span class="s2">"http://go.screver.com/survey?token=92bf5361-90ae-47f9-bc67-66d0af776f5a?surveyItem=5d43dc66faa7521f1730ee7e?value=5"</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='query-parameters-3'>Query Parameters</h3>
+</span></code></pre><h3 id='query-parameters-4'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -537,53 +566,19 @@ Each link include:
 </tr>
 </thead><tbody>
 <tr>
-<td>questionId</td>
-<td>objectId</td>
-<td>ObjectId of specific smiley question in survey.</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td>emailsArray</td>
+<td>invitations</td>
 <td>array</td>
-<td>Array of emails of contact.</td>
+<td>Array of invitation objects. Object keys - &quot;email&quot;: user email (string, required), &quot;ttl&quot;: token time-to-live in ms, override global ttl (number, not required), &quot;meta&quot;: invitation object meta data to make search or delete results, example: &quot;meta&quot;: { userId: &#39;userId&#39;, day: &#39;01.01.2020&#39; } (object, not required)</td>
 <td>Yes</td>
 </tr>
-</tbody></table>
-<h1 id='survey-results'>Survey Results</h1><h2 id='delete-specific-survey-result'>Delete specific survey result.</h2>
-<blockquote>
-<p>Delete survey by meta stored in survey result.</p>
-</blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">DELETE</span> <span class="nn">/api/v2/survey-results/remove-one</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</span>
-<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">https://go.screver.com</span>
-</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123123"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<blockquote>
-<p>The above request returns the following response:</p>
-</blockquote>
-<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No content</span>
-</code></pre><h3 id='query-parameters-4'>Query Parameters</h3>
-<table><thead>
 <tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-<th>Required</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>meta</td>
-<td>Object</td>
-<td>ObjectId of meta data.</td>
+<td>ttl</td>
+<td>number</td>
+<td>Token time-to-live in ms.</td>
 <td>No</td>
 </tr>
 </tbody></table>
-<h2 id='delete-survey-result-by-id'>Delete survey result by id</h2>
+<h1 id='survey-results'>Survey Results</h1><h2 id='delete-survey-result-by-id'>Delete survey result by id</h2>
 <blockquote>
 <p>Delete survey result by ID</p>
 </blockquote>
