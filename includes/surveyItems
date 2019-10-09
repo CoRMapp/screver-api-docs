@@ -1,0 +1,123 @@
+<h1 id='survey-items'>Survey Items</h1>
+<p><code>Survey Item</code> - specific part of survey. It could contain question or HTML content.</p>
+
+<p>If <code>surveyItem</code> contain question, it keep question logic and configurations like:
+custom labels, is question required, min/max answers and others.</p>
+<h2 id='get-specific-survey-item-by-id'>Get specific survey item by ID.</h2><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/survey-items/5d0b985960a1da78cf8f4a57</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">https://go.screver.com</span>
+</code></pre>
+<blockquote>
+<p>The above request returns the following response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d1086759513bd03ca00a57a"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"question"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"survey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d1086759513bd03ca00a578"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"surveySection"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d1086759513bd03ca00a579"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"question"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d1086759513bd03ca00a57b"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"translation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="s2">"de"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"ru"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"nl"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"linearScale"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"from"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s2">"to"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="s2">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"smiley"</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linearScale"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cupiditate"</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"createdBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d1086759513bd03ca00a575"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updatedBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d1086759513bd03ca00a575"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request'>HTTP Request</h3>
+<p><code>GET /api/v2/survey-items/:id</code></p>
+<h3 id='parameters'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>Id of specific survey item.</td>
+<td>Yes</td>
+</tr>
+</tbody></table>
+<h2 id='generate-answers-links'>Generate answers links</h2><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/api/v2/survey-items/5d10840f5b4ca0038509890c/generate-links</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">https://go.screver.com</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"invitations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w"> </span><span class="err">email</span><span class="p">:</span><span class="w"> </span><span class="err">'example</span><span class="mi">1</span><span class="err">@email.com'</span><span class="p">,</span><span class="w"> </span><span class="err">meta</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">userId</span><span class="p">:</span><span class="w"> </span><span class="err">'user</span><span class="mi">1</span><span class="err">'</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w"> </span><span class="err">email</span><span class="p">:</span><span class="w"> </span><span class="err">'example</span><span class="mi">2</span><span class="err">@email.com'</span><span class="p">,</span><span class="w"> </span><span class="err">meta</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">userId</span><span class="p">:</span><span class="w"> </span><span class="err">'user</span><span class="mi">2</span><span class="err">'</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w"> </span><span class="err">email</span><span class="p">:</span><span class="w"> </span><span class="err">'example</span><span class="mi">3</span><span class="err">@email.com'</span><span class="p">,</span><span class="w"> </span><span class="err">meta</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">userId</span><span class="p">:</span><span class="w"> </span><span class="err">'user</span><span class="mi">3</span><span class="err">'</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"ttl"</span><span class="p">:</span><span class="w"> </span><span class="mi">86400000</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>The above request returns the following response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example1@email.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"links"</span><span class="p">:</span><span class="w">
+     </span><span class="p">[</span><span class="w"> </span><span class="s2">"http://go.screver.com/survey?token=4f207be5-a00b-4493-bb39-873db282c614?surveyItem=5d43dc66faa7521f1730ee7e?value=1"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"http://go.screver.com/survey?token=4f207be5-a00b-4493-bb39-873db282c614?surveyItem=5d43dc66faa7521f1730ee7e?value=2"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"http://go.screver.com/survey?token=4f207be5-a00b-4493-bb39-873db282c614?surveyItem=5d43dc66faa7521f1730ee7e?value=3"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"http://go.screver.com/survey?token=4f207be5-a00b-4493-bb39-873db282c614?surveyItem=5d43dc66faa7521f1730ee7e?value=4"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"http://go.screver.com/survey?token=4f207be5-a00b-4493-bb39-873db282c614?surveyItem=5d43dc66faa7521f1730ee7e?value=5"</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w"> </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example2@email.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"links"</span><span class="p">:</span><span class="w">
+     </span><span class="p">[</span><span class="w"> </span><span class="s2">"http://go.screver.com/survey?token=2b69e181-3a16-415a-94f4-0aaa2544cd2e?surveyItem=5d43dc66faa7521f1730ee7e?value=1"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"http://go.screver.com/survey?token=2b69e181-3a16-415a-94f4-0aaa2544cd2e?surveyItem=5d43dc66faa7521f1730ee7e?value=2"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"http://go.screver.com/survey?token=2b69e181-3a16-415a-94f4-0aaa2544cd2e?surveyItem=5d43dc66faa7521f1730ee7e?value=3"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"http://go.screver.com/survey?token=2b69e181-3a16-415a-94f4-0aaa2544cd2e?surveyItem=5d43dc66faa7521f1730ee7e?value=4"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"http://go.screver.com/survey?token=2b69e181-3a16-415a-94f4-0aaa2544cd2e?surveyItem=5d43dc66faa7521f1730ee7e?value=5"</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w"> </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example3@email.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"links"</span><span class="p">:</span><span class="w">
+     </span><span class="p">[</span><span class="w"> </span><span class="s2">"http://go.screver.com/survey?token=92bf5361-90ae-47f9-bc67-66d0af776f5a?surveyItem=5d43dc66faa7521f1730ee7e?value=1"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"http://go.screver.com/survey?token=92bf5361-90ae-47f9-bc67-66d0af776f5a?surveyItem=5d43dc66faa7521f1730ee7e?value=2"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"http://go.screver.com/survey?token=92bf5361-90ae-47f9-bc67-66d0af776f5a?surveyItem=5d43dc66faa7521f1730ee7e?value=3"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"http://go.screver.com/survey?token=92bf5361-90ae-47f9-bc67-66d0af776f5a?surveyItem=5d43dc66faa7521f1730ee7e?value=4"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"http://go.screver.com/survey?token=92bf5361-90ae-47f9-bc67-66d0af776f5a?surveyItem=5d43dc66faa7521f1730ee7e?value=5"</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span></code></pre><h3 id='http-request-2'>HTTP Request</h3>
+<p><code>POST /api/v2/survey-items/:id/generate-links</code></p>
+
+<p>Generate specific links from answering to smiley-type question from email.
+After sending array of invitations, system would create invite by each email and return generated links
+by answering from email.</p>
+
+<p>Each link include:</p>
+
+<p><code>token</code> - unique invite token,</p>
+
+<p><code>surveyItem</code> - id of entity related with question, use from answering</p>
+
+<p><code>value</code> - answer value by each smiley</p>
+<h3 id='body'>Body</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>invitations</td>
+<td>array</td>
+<td>Array of invitation objects. Object keys - <code>email</code>: user email (string, required), <code>ttl</code>: token time-to-live in ms, override global ttl (number, not required), <code>meta</code>: invitation object meta data to make search or delete results, example - <code>meta: { userId: &#39;userId&#39;, day: &#39;01.01.2020&#39; }</code> (object, not required)</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>ttl</td>
+<td>number</td>
+<td>Token time-to-live in ms.</td>
+<td>No</td>
+</tr>
+</tbody></table>

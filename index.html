@@ -260,10 +260,29 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#webhooks" class="toc-h1 toc-link" data-title="Webhooks">Webhooks</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-webhook" class="toc-h2 toc-link" data-title="Create webhook">Create webhook</a>
+                  </li>
+                  <li>
+                    <a href="#update-webhook-by-id" class="toc-h2 toc-link" data-title="Update webhook by id">Update webhook by id</a>
+                  </li>
+                  <li>
+                    <a href="#get-list-of-webhooks-with-base-data" class="toc-h2 toc-link" data-title="Get list of webhooks with base data.">Get list of webhooks with base data.</a>
+                  </li>
+                  <li>
+                    <a href="#get-specific-webhook-by-id-with-all-related-data" class="toc-h2 toc-link" data-title="Get specific webhook by ID with all related data.">Get specific webhook by ID with all related data.</a>
+                  </li>
+                  <li>
+                    <a href="#delete-webhook-by-id" class="toc-h2 toc-link" data-title="Delete webhook by id">Delete webhook by id</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://github.com/lord/slate'>Documentation Powered by Slate</a></li>
+            <li><a href='https://go.screver.com'>Screver</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -369,13 +388,15 @@ You must replace <code>u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</code> with the access t
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='query-parameters'>Query Parameters</h3>
+</span></code></pre><h3 id='http-request'>HTTP Request</h3>
+<p><code>GET /api/v2/surveys</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
 <th>Type</th>
 <th>Description</th>
-<th>Default</th>
+<th>Valid</th>
 <th>Required</th>
 </tr>
 </thead><tbody>
@@ -383,21 +404,21 @@ You must replace <code>u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</code> with the access t
 <td>skip</td>
 <td>number</td>
 <td>Count of skipped items for pagination.</td>
-<td>10</td>
+<td>any</td>
 <td>No</td>
 </tr>
 <tr>
 <td>limit</td>
 <td>number</td>
 <td>Count of returned items in response.</td>
-<td>10</td>
+<td><code>5</code>, <code>10</code>, <code>25</code>, <code>50</code>, <code>100</code></td>
 <td>Yes</td>
 </tr>
 <tr>
 <td>sort</td>
 <td>string</td>
-<td>Sort parameter - name, createdAt, updatedAt</td>
-<td>createdAt</td>
+<td>Sort object, with single key: key - sort field, value - order (<code>1</code> - <code>ASC</code>, <code>-1</code> - <code>DESC</code>). Example: <code>{ createdAt: -1 }</code></td>
+<td><code>createdAt</code>, <code>updatedAt</code>, <code>name</code></td>
 <td>No</td>
 </tr>
 </tbody></table>
@@ -450,7 +471,9 @@ You must replace <code>u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</code> with the access t
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='query-parameters-2'>Query Parameters</h3>
+</span></code></pre><h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET /api/v2/surveys/:id</code></p>
+<h3 id='parameters'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -461,12 +484,17 @@ You must replace <code>u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</code> with the access t
 </thead><tbody>
 <tr>
 <td>id</td>
-<td>objectId</td>
-<td>ObjectId of specific survey.</td>
+<td>string</td>
+<td>Id of specific survey.</td>
 <td>Yes</td>
 </tr>
 </tbody></table>
-<h1 id='survey-items'>Survey Items</h1><h2 id='get-specific-survey-item-by-id'>Get specific survey item by ID.</h2><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/survey-items/5d0b985960a1da78cf8f4a57</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<h1 id='survey-items'>Survey Items</h1>
+<p><code>Survey Item</code> - specific part of survey. It could contain question or HTML content.</p>
+
+<p>If <code>surveyItem</code> contain question, it keep question logic and configurations like:
+custom labels, is question required, min/max answers and others.</p>
+<h2 id='get-specific-survey-item-by-id'>Get specific survey item by ID.</h2><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/survey-items/5d0b985960a1da78cf8f4a57</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">https://go.screver.com</span>
@@ -492,7 +520,9 @@ You must replace <code>u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</code> with the access t
     </span><span class="s2">"updatedBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d1086759513bd03ca00a575"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='query-parameters-3'>Query Parameters</h3>
+</span></code></pre><h3 id='http-request'>HTTP Request</h3>
+<p><code>GET /api/v2/survey-items/:id</code></p>
+<h3 id='parameters'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -503,22 +533,12 @@ You must replace <code>u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</code> with the access t
 </thead><tbody>
 <tr>
 <td>id</td>
-<td>objectId</td>
-<td>ObjectId of specific survey item.</td>
+<td>string</td>
+<td>Id of specific survey item.</td>
 <td>Yes</td>
 </tr>
 </tbody></table>
-<h2 id='generate-answers-links'>Generate answers links</h2>
-<blockquote>
-<p>Generate specific links from answering to smiley-type question from email.
-After sending array of invitations, system would create invite by each email and return generated links
-by answering from email.
-Each link include:
-- token - unique invite token,
-- surveyItem - id of entity related with question, use from answering
-- value - answer value by each smiley</p>
-</blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/api/v2/survey-items/5d10840f5b4ca0038509890c/generate-links</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<h2 id='generate-answers-links'>Generate answers links</h2><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/api/v2/survey-items/5d10840f5b4ca0038509890c/generate-links</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">https://go.screver.com</span>
@@ -556,7 +576,21 @@ Each link include:
        </span><span class="s2">"http://go.screver.com/survey?token=92bf5361-90ae-47f9-bc67-66d0af776f5a?surveyItem=5d43dc66faa7521f1730ee7e?value=3"</span><span class="p">,</span><span class="w">
        </span><span class="s2">"http://go.screver.com/survey?token=92bf5361-90ae-47f9-bc67-66d0af776f5a?surveyItem=5d43dc66faa7521f1730ee7e?value=4"</span><span class="p">,</span><span class="w">
        </span><span class="s2">"http://go.screver.com/survey?token=92bf5361-90ae-47f9-bc67-66d0af776f5a?surveyItem=5d43dc66faa7521f1730ee7e?value=5"</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='query-parameters-4'>Query Parameters</h3>
+</span></code></pre><h3 id='http-request-2'>HTTP Request</h3>
+<p><code>POST /api/v2/survey-items/:id/generate-links</code></p>
+
+<p>Generate specific links from answering to smiley-type question from email.
+After sending array of invitations, system would create invite by each email and return generated links
+by answering from email.</p>
+
+<p>Each link include:</p>
+
+<p><code>token</code> - unique invite token,</p>
+
+<p><code>surveyItem</code> - id of entity related with question, use from answering</p>
+
+<p><code>value</code> - answer value by each smiley</p>
+<h3 id='body'>Body</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -568,7 +602,7 @@ Each link include:
 <tr>
 <td>invitations</td>
 <td>array</td>
-<td>Array of invitation objects. Object keys - &quot;email&quot;: user email (string, required), &quot;ttl&quot;: token time-to-live in ms, override global ttl (number, not required), &quot;meta&quot;: invitation object meta data to make search or delete results, example: &quot;meta&quot;: { userId: &#39;userId&#39;, day: &#39;01.01.2020&#39; } (object, not required)</td>
+<td>Array of invitation objects. Object keys - <code>email</code>: user email (string, required), <code>ttl</code>: token time-to-live in ms, override global ttl (number, not required), <code>meta</code>: invitation object meta data to make search or delete results, example - <code>meta: { userId: &#39;userId&#39;, day: &#39;01.01.2020&#39; }</code> (object, not required)</td>
 <td>Yes</td>
 </tr>
 <tr>
@@ -582,6 +616,8 @@ Each link include:
 <blockquote>
 <p>Delete survey result by ID</p>
 </blockquote>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>DELETE /api/v2/survey-results/:id</code></p>
 <pre class="highlight http tab-http"><code><span class="nf">DELETE</span> <span class="nn">/api/v2/survey-results/5d10840f5b4ca0038509890c</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
@@ -595,6 +631,8 @@ Each link include:
 <blockquote>
 <p>Delete survey results by array of ids</p>
 </blockquote>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>DELETE /api/v2/survey-items/remove-array</code></p>
 <pre class="highlight http tab-http"><code><span class="nf">DELETE</span> <span class="nn">/api/v2/survey-results/remove-array</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
@@ -607,7 +645,7 @@ Each link include:
 <p>The above request returns the following response:</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No content</span>
-</code></pre><h3 id='query-parameters-5'>Query Parameters</h3>
+</code></pre><h3 id='body'>Body</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -619,15 +657,11 @@ Each link include:
 <tr>
 <td>idsArray</td>
 <td>array</td>
-<td>Array of ObjectIds.</td>
+<td>Array of survey results id&#39;s.</td>
 <td>Yes</td>
 </tr>
 </tbody></table>
-<h2 id='delete-survey-results-by-meta'>Delete survey results by meta</h2>
-<blockquote>
-<p>Delete survey results by meta stored in survey result.</p>
-</blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">DELETE</span> <span class="nn">/api/v2/survey-results/remove-by-meta</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<h2 id='delete-survey-results-by-meta'>Delete survey results by meta</h2><pre class="highlight http tab-http"><code><span class="nf">DELETE</span> <span class="nn">/api/v2/survey-results/remove-by-meta</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">https://go.screver.com</span>
@@ -637,11 +671,15 @@ Each link include:
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+<p>Delete survey results by meta stored in survey result.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>DELETE /api/v2/survey-results/remove-by-meta</code></p>
+
 <blockquote>
 <p>The above request returns the following response:</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No content</span>
-</code></pre><h3 id='query-parameters-6'>Query Parameters</h3>
+</code></pre><h3 id='body-2'>Body</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -653,8 +691,333 @@ Each link include:
 <tr>
 <td>meta</td>
 <td>Object</td>
-<td>ObjectId of meta data.</td>
+<td>Meta object.</td>
 <td>No</td>
+</tr>
+</tbody></table>
+<h1 id='webhooks'>Webhooks</h1>
+<p>You can configure webhook endpoints via the API to be notified about events that happen.</p>
+
+<p><code>POST</code> payloads that are delivered to your webhook&#39;s configured URL endpoint will contain special header:</p>
+
+<p><code>X-API-SIGNATURE</code> - The HMAC hex digest of the response body. Each webhook have own generated <code>secret</code>.
+The HMAC hex digest is generated using the <code>sha256</code> hash function and the secret as the HMAC <code>key</code>.</p>
+
+<p>Webhook endpoint must have a url and type.
+Type is related to webhook event.</p>
+
+<p>Valid types:</p>
+
+<p><code>optionSelected</code> - Event fired when user click on predefined answer in email.</p>
+
+<p>Response fields:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>timestamp</td>
+<td>string</td>
+<td>Time when event fired.</td>
+</tr>
+<tr>
+<td>surveyItemId</td>
+<td>string</td>
+<td>Id of survey item, that contain question.</td>
+</tr>
+<tr>
+<td>meta</td>
+<td>object</td>
+<td>Result meta object from invitation.</td>
+</tr>
+<tr>
+<td>question</td>
+<td>object</td>
+<td>Question object.</td>
+</tr>
+<tr>
+<td>answer</td>
+<td>object</td>
+<td>Answer value (id or number).</td>
+</tr>
+</tbody></table>
+
+<p><code>surveyCompleted</code> - Event fired when user complete survey.</p>
+
+<p>Response fields:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>timestamp</td>
+<td>string</td>
+<td>Time when event fired.</td>
+</tr>
+<tr>
+<td>meta</td>
+<td>object</td>
+<td>Result meta object from invitation.</td>
+</tr>
+</tbody></table>
+
+<p><code>*</code> - Wildcard event, set this if you want to receive all events to one endpoint.</p>
+<h2 id='create-webhook'>Create webhook</h2><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/api/v2/webhooks</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">https://go.screver.com</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+ </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"optionSelected"</span><span class="p">,</span><span class="w">
+ </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://go.screver.com/api/v1/test-webhook"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>The above request returns the following response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">Created</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d9b4816de62163caf637d5c"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"optionSelected"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d00f1e3001530581cc1ea85"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://go.screver.com/api/v1/test-webhook"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f6353acf-bca0-4992-8313-0d509f80c4f1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-07T14:13:42.489Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-07T14:13:42.489Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"__v"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request'>HTTP Request</h3>
+<p><code>POST /api/v2/webhooks</code></p>
+<h3 id='body'>Body</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Valid</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>Webhook type.</td>
+<td><code>optionSelected</code>, <code>surveyCompleted</code>, <code>*</code></td>
+<td>No</td>
+</tr>
+<tr>
+<td>url</td>
+<td>string</td>
+<td>Webhook callback url.</td>
+<td>any</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h2 id='update-webhook-by-id'>Update webhook by id</h2><pre class="highlight http tab-http"><code><span class="nf">PUT</span> <span class="nn">/api/v2/webhooks/5d9b4816de62163caf637d5c</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">https://go.screver.com</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+ </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"optionSelected"</span><span class="p">,</span><span class="w">
+ </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://go.screver.com/api/v1/test-webhook"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>The above request returns the following response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"optionSelected"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d9b4816de62163caf637d5c"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://go.screver.com/api/v1/test-webhook"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f6353acf-bca0-4992-8313-0d509f80c4f1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-07T14:13:42.489Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-07T14:30:05.313Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request-2'>HTTP Request</h3>
+<p><code>PUT /api/v2/webhooks/:id</code></p>
+<h3 id='body-2'>Body</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Valid</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>Webhook type.</td>
+<td><code>optionSelected</code>, <code>surveyCompleted</code>, <code>*</code></td>
+<td>No</td>
+</tr>
+<tr>
+<td>url</td>
+<td>string</td>
+<td>Webhook callback url.</td>
+<td>any</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h2 id='get-list-of-webhooks-with-base-data'>Get list of webhooks with base data.</h2><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/webhooks?limit=5</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">https://go.screver.com</span>
+</code></pre>
+<blockquote>
+<p>The above request returns the following response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"resources"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d9c378127a91314f83f9802"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"surveyCompleted"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://go.screver.com/api/v1/test-webhook2"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"09e90103-3dc9-4378-9402-c58e87d38ddd"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-08T07:15:13.945Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-08T07:15:13.945Z"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d9c377c27a91314f83f9801"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"optionSelected"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://go.screver.com/api/v1/test-webhook2"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33d30530-fe4b-469e-9e14-e9ef19b9775b"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-08T07:15:08.517Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-08T07:15:08.517Z"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d9c377227a91314f83f97ff"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://go.screver.com/api/v1/test-webhook"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"970808e3-52ac-4d8c-b584-5c8123a72698"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-08T07:14:58.136Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-08T07:14:58.136Z"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d9c376c27a91314f83f97fe"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"surveyCompleted"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://go.screver.com/api/v1/test-webhook"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b2d2693b-f1ad-44c4-b9b6-0cf3534dd00b"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-08T07:14:52.361Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-08T07:14:52.361Z"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d9b4b4ede62163caf637d5d"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"optionSelected"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://go.screver.com/api/v1/test-webhook"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1b629c44-e283-44ef-946c-8bce5f014e88"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-07T14:27:26.908Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-08T07:14:40.734Z"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET /api/v2/webhooks</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Valid</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>skip</td>
+<td>number</td>
+<td>Count of skipped items for pagination.</td>
+<td>any</td>
+<td>No</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>number</td>
+<td>Count of returned items in response.</td>
+<td><code>5</code>, <code>10</code>, <code>25</code>, <code>50</code>, <code>100</code></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>sort</td>
+<td>string</td>
+<td>Sort object, with single key: key - sort field, value - order (<code>1</code> - <code>ASC</code>, <code>-1</code> - <code>DESC</code>). Example: <code>{ createdAt: -1 }</code></td>
+<td><code>createdAt</code>, <code>updatedAt</code></td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h2 id='get-specific-webhook-by-id-with-all-related-data'>Get specific webhook by ID with all related data.</h2><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/webhooks/5d0b985960a1da78cf8f4a57</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">https://go.screver.com</span>
+</code></pre>
+<blockquote>
+<p>The above request returns the following response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d9b4b4ede62163caf637d5d"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"optionSelected"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://go.screver.com/api/v1/test-webhook"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1b629c44-e283-44ef-946c-8bce5f014e88"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-07T14:27:26.908Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-07T14:27:26.908Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET /api/v2/webhooks/:id</code></p>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>Id of specific webhook.</td>
+<td>Yes</td>
+</tr>
+</tbody></table>
+<h2 id='delete-webhook-by-id'>Delete webhook by id</h2><pre class="highlight http tab-http"><code><span class="nf">DELETE</span> <span class="nn">/api/v2/webhooks/5d10840f5b4ca0038509890c</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">https://go.screver.com</span>
+</code></pre>
+<blockquote>
+<p>The above request returns the following response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No content</span>
+</code></pre><h3 id='http-request-5'>HTTP Request</h3>
+<p><code>DELETE /api/v2/webhooks/:id</code></p>
+<h3 id='query-parameters-3'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>Id of specific webhook.</td>
+<td>Yes</td>
 </tr>
 </tbody></table>
 

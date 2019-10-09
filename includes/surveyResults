@@ -1,0 +1,83 @@
+<h1 id='survey-results'>Survey Results</h1><h2 id='delete-survey-result-by-id'>Delete survey result by id</h2>
+<blockquote>
+<p>Delete survey result by ID</p>
+</blockquote>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>DELETE /api/v2/survey-results/:id</code></p>
+<pre class="highlight http tab-http"><code><span class="nf">DELETE</span> <span class="nn">/api/v2/survey-results/5d10840f5b4ca0038509890c</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">https://go.screver.com</span>
+</code></pre>
+<blockquote>
+<p>The above request returns the following response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No content</span>
+</code></pre><h2 id='delete-survey-results-by-array-of-ids'>Delete survey results by array of ids</h2>
+<blockquote>
+<p>Delete survey results by array of ids</p>
+</blockquote>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>DELETE /api/v2/survey-items/remove-array</code></p>
+<pre class="highlight http tab-http"><code><span class="nf">DELETE</span> <span class="nn">/api/v2/survey-results/remove-array</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">https://go.screver.com</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"idsArray"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"5d10840f5b4ca0038509890c"</span><span class="p">,</span><span class="w"> </span><span class="s2">"5d10840f5b4ca0038509465r"</span><span class="p">,</span><span class="w"> </span><span class="s2">"5d10840f5b4ca0038509978x"</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>The above request returns the following response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No content</span>
+</code></pre><h3 id='body'>Body</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>idsArray</td>
+<td>array</td>
+<td>Array of survey results id&#39;s.</td>
+<td>Yes</td>
+</tr>
+</tbody></table>
+<h2 id='delete-survey-results-by-meta'>Delete survey results by meta</h2><pre class="highlight http tab-http"><code><span class="nf">DELETE</span> <span class="nn">/api/v2/survey-results/remove-by-meta</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">https://go.screver.com</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123123"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Delete survey results by meta stored in survey result.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>DELETE /api/v2/survey-results/remove-by-meta</code></p>
+
+<blockquote>
+<p>The above request returns the following response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No content</span>
+</code></pre><h3 id='body-2'>Body</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>meta</td>
+<td>Object</td>
+<td>Meta object.</td>
+<td>No</td>
+</tr>
+</tbody></table>
