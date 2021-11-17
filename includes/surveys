@@ -169,3 +169,65 @@
 <td>Yes</td>
 </tr>
 </tbody></table>
+<h2 id='generate-html-of-first-survey-question'>Generate HTML of first survey question</h2>
+<p>Endpoint would return result HTML with answer links dependent on question type.
+Query params would configure HTML data and attach meta data to survey result</p>
+<pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/api/v2/surveys/6192572cea2bc306e2c6051f/first-question-html</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">https://go.screver.com</span>
+</code></pre>
+<blockquote>
+<p>The above request returns the following response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">text/html; charset=utf-8</span>
+</code></pre><h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET /api/v2/surveys/:id/first-question-html</code></p>
+<h3 id='parameters-2'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>Id of specific survey.</td>
+<td>Yes</td>
+</tr>
+</tbody></table>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Valid</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>lang</td>
+<td>string</td>
+<td>Language of result question HTML, if not provided - default survey language would be applied</td>
+<td>&#39;en&#39;, &#39;de&#39;, &#39;fr&#39;, ...</td>
+<td>No</td>
+</tr>
+<tr>
+<td>meta</td>
+<td>object</td>
+<td>Meta object, could keep, any keys-data, that would be linked with result. Example: <code>meta: { userId: &#39;userId&#39;, day: &#39;01.01.2021&#39; }</code></td>
+<td>{}</td>
+<td>No</td>
+</tr>
+<tr>
+<td>ttl</td>
+<td>number</td>
+<td>Token time-to-live in ms.</td>
+<td></td>
+<td>No</td>
+</tr>
+</tbody></table>
