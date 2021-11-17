@@ -156,3 +156,38 @@ Content-Type: application/json
 Parameter | Type | Description | Required |
 --------- | ------- | ----------- | -------- |
 id |string| Id of specific survey.| Yes |
+
+## Generate HTML of first survey question
+
+Endpoint would return result HTML with answer links dependent on question type.
+Query params would configure HTML data and attach meta data to survey result
+
+```http
+POST /api/v2/surveys/6192572cea2bc306e2c6051f/first-question-html HTTP/1.1
+Authorization: Bearer u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3
+Host: https://go.screver.com
+```
+
+> The above request returns the following response:
+
+```http
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=utf-8
+```
+
+### HTTP Request
+`GET /api/v2/surveys/:id/first-question-html`
+
+### Parameters
+
+Parameter | Type | Description | Required |
+--------- | ------- | ----------- | -------- |
+id |string| Id of specific survey.| Yes |
+
+### Query Parameters
+
+Parameter | Type | Description | Valid  | Required
+------- | ----- | ------- | ----- | ----- |
+lang |string| Language of result question HTML, if not provided - default survey language would be applied | 'en', 'de', 'fr', ... | No |
+meta|object| Meta object, could keep, any keys-data, that would be linked with result. Example: `meta: { userId: 'userId', day: '01.01.2021' }` | {} | No |
+ttl |number| Token time-to-live in ms.|  | No
