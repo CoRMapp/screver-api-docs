@@ -1,4 +1,4 @@
-# Tableau Integration - Get-Data
+# Tableau Integration
 
 Get survey results data prepared for Tableau inserting.
 
