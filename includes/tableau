@@ -1,4 +1,4 @@
-<h1 id='tableau-integration-get-data'>Tableau Integration - Get-Data</h1>
+<h1 id='tableau-integration'>Tableau Integration</h1>
 <p>Get survey results data prepared for Tableau inserting.</p>
 
 <p>Have 2 similar endpoints with different authorization process:</p>
