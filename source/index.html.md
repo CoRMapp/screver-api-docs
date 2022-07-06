@@ -13,6 +13,7 @@ includes:
   - surveyItems.md
   - surveyResults.md
   - webhooks.md
+  - tableau.md
 
 search: true
 ---
