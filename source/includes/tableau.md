@@ -8,6 +8,8 @@ Have 2 similar endpoints with different authorization process:
 
 `GET /api/v1/tableau/get-data` - Server-to-Server OAuth Bearer token auth
 
+## Get data
+
 ```http
 GET /api/v1/tableau/get-data HTTP/1.1
 Authorization: Bearer u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3
