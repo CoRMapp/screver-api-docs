@@ -1,0 +1,523 @@
+<h1 id='tableau-integration-get-data'>Tableau Integration - Get-Data</h1>
+<p>Get survey results data prepared for Tableau inserting.</p>
+
+<p>Have 2 similar endpoints with different authorization process:</p>
+
+<p><code>GET /api/v1/tableau/get-data/jwt</code> - JWT browser authorization for testing via browser</p>
+
+<p><code>GET /api/v1/tableau/get-data</code> - Server-to-Server OAuth Bearer token auth</p>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v1/tableau/get-data</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">https://go.screver.com</span>
+</code></pre>
+<blockquote>
+<p>The above request returns the following response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"surveyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba386ff"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"participantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98866b7ba77479ba38a11"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-06-15T07:21:10.252Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sectionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba38700"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"section"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a9875eb7ba77479ba3872a"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Image Choice"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Question 1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a9875eb7ba77479ba3872c"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Option 2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"valueLabel"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"surveyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba386ff"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"participantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98866b7ba77479ba38a11"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-06-15T07:21:10.252Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sectionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba38700"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"section"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98761cb3cda478b55609f"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dropdown"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Question 2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98774cb3cda478b556310"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Option 3"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"valueLabel"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"surveyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba386ff"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"participantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98866b7ba77479ba38a11"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-06-15T07:21:10.252Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sectionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba38700"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"section"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98766cb3cda478b5560ad"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Text"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Question 3"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aa"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"valueLabel"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"surveyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba386ff"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"participantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98866b7ba77479ba38a11"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-06-15T07:21:10.252Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sectionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba38700"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"section"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a9876bb7ba77479ba3873f"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Text"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Question 4"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"valueNumeric"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"valueLabel"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"surveyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba386ff"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"participantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98866b7ba77479ba38a11"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-06-15T07:21:10.252Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sectionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba38700"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"section"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a9876fcb3cda478b5562f9"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Question 5"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"valueNumeric"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"valueLabel"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"surveyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba386ff"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"participantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98866b7ba77479ba38a11"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-06-15T07:21:10.252Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sectionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba38700"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"section"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a9876fcb3cda478b5562f9"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Question 5"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"valueNumeric"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"valueLabel"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"surveyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba386ff"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"participantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98866b7ba77479ba38a11"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-06-15T07:21:10.252Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sectionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba38700"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"section"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a9876fcb3cda478b5562f9"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Question 5"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"valueNumeric"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"valueLabel"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"surveyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba386ff"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"participantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98866b7ba77479ba38a11"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-06-15T07:21:10.252Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sectionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba38700"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"section"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98799b7ba77479ba38772"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Checkboxes"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Question 6"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a9879db7ba77479ba38789"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"None of the above"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"valueLabel"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"surveyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba386ff"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"participantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98866b7ba77479ba38a11"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-06-15T07:21:10.252Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sectionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba38700"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"section"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a987a1cb3cda478b55633f"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Checkbox Matrix"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Question 7"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a987a4b7ba77479ba38798-62a987a1cb3cda478b556341"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Row 2 - Column 1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"valueLabel"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"surveyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba386ff"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"participantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98866b7ba77479ba38a11"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-06-15T07:21:10.252Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sectionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba38700"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"section"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a987a1cb3cda478b55633f"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Checkbox Matrix"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Question 7"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a987a1cb3cda478b556340-62a987a6b7ba77479ba387a0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Row 1 - Column 2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"valueLabel"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"surveyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba386ff"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"participantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98866b7ba77479ba38a11"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-06-15T07:21:10.252Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sectionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba38700"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"section"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a987a1cb3cda478b55633f"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Checkbox Matrix"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Question 7"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a987a5cb3cda478b556355-62a987bccb3cda478b5565dd"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Row 3 - “I can’t tell”"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"valueLabel"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"surveyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba386ff"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"participantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98866b7ba77479ba38a11"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-06-15T07:21:10.252Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sectionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba38700"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"section"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a987bfb7ba77479ba387b4"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Multiple Choice"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Question 8"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a987c1cb3cda478b5565e5"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Option 2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"valueLabel"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"surveyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba386ff"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"participantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98866b7ba77479ba38a11"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-06-15T07:21:10.252Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sectionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba38700"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"section"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a987c7b7ba77479ba387cb"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Multiple Choice Matrix"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Question 9"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a987c7b7ba77479ba387cc-62a987cbcb3cda478b5565fa"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Row 1 - Column 2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"valueLabel"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"surveyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba386ff"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"participantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98866b7ba77479ba38a11"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-06-15T07:21:10.252Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sectionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba38700"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"section"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a987c7b7ba77479ba387cb"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Multiple Choice Matrix"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Question 9"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a987cbb7ba77479ba387db-62a987d0b7ba77479ba387eb"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Row 2 - “I can’t tell”"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"valueLabel"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"surveyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba386ff"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"participantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98866b7ba77479ba38a11"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-06-15T07:21:10.252Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sectionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba38700"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"section"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a987d5b7ba77479ba387f3"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Multiple Scale"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Question 10"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"valueNumeric"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"valueLabel"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"surveyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba386ff"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"participantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98866b7ba77479ba38a11"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-06-15T07:21:10.252Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sectionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba38700"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"section"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a987dfb7ba77479ba38807"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Linear Scale"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Question 11"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"valueNumeric"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"valueLabel"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"surveyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba386ff"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"participantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98866b7ba77479ba38a11"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-06-15T07:21:10.252Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sectionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba38700"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"section"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a987e8b7ba77479ba38817"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Multiple Scale"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Question 12"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"valueNumeric"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"valueLabel"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"surveyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba386ff"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"participantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98866b7ba77479ba38a11"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-06-15T07:21:10.252Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sectionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba38700"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"section"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a987f2cb3cda478b55686f"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Linear Scale"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Question 13"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"valueNumeric"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"valueLabel"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"surveyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba386ff"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"participantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98866b7ba77479ba38a11"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-06-15T07:21:10.252Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sectionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba38700"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"section"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98800b7ba77479ba38849"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Multiple Scale"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Question 14"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"valueNumeric"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"valueLabel"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"surveyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba386ff"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"participantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98866b7ba77479ba38a11"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-06-15T07:21:10.252Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sectionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba38700"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"section"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a9880bcb3cda478b5568a9"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Multiple Scale"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Question 15"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"valueNumeric"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"valueLabel"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"surveyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba386ff"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"participantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98866b7ba77479ba38a11"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-06-15T07:21:10.252Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sectionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba38700"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"section"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a9881db7ba77479ba3887b"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Net Promoter Score"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"How likely are you to recommend us to a friend or colleague?"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"valueNumeric"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"valueLabel"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"surveyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba386ff"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"participantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98866b7ba77479ba38a11"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-06-15T07:21:10.252Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sectionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba38700"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"section"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a9881db7ba77479ba3887b"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Net Promoter Score Custom Answer"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"How likely are you to recommend us to a friend or colleague?"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"qadw"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"valueLabel"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"surveyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba386ff"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"participantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98866b7ba77479ba38a11"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-06-15T07:21:10.252Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sectionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba38700"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"section"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98826b7ba77479ba3888b"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Slider"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Question 17"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"valueNumeric"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"valueLabel"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"surveyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba386ff"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"participantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98866b7ba77479ba38a11"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-06-15T07:21:10.252Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sectionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba38700"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"section"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98835b7ba77479ba388b3"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thumbs"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Question 18"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"yes"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"valueNumeric"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"valueLabel"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"surveyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba386ff"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"participantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98866b7ba77479ba38a11"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-06-15T07:21:10.252Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sectionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba38700"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"section"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98838cb3cda478b556b6d"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Text"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Question 19"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+495678493123"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"valueNumeric"</span><span class="p">:</span><span class="w"> </span><span class="mi">495678493123</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"valueLabel"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"surveyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba386ff"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"participantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98866b7ba77479ba38a11"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-06-15T07:21:10.252Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sectionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba38700"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"section"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98842cb3cda478b556b77"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Text"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Question 20"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wed Jun 08 2022 00:00:00 GMT+0300 (Eastern European Summer Time)---"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"valueLabel"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"surveyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba386ff"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"participantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98866b7ba77479ba38a11"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-06-15T07:21:10.252Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sectionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba38700"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"section"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98847b7ba77479ba388c3"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Text"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Question 21"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vb@fgh.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"valueLabel"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"surveyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba386ff"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"participantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98866b7ba77479ba38a11"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-06-15T07:21:10.252Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sectionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a98755b7ba77479ba38700"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"section"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a9884bcb3cda478b556b81"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Country List"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"questionText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Question 22"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Eritrea"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"valueLabel"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request'>HTTP Request</h3>
+<p><code>GET /api/v1/tableau/get-data</code></p>
+<h3 id='query'>Query</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Valid</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>surveyId</td>
+<td>string (ID)</td>
+<td>Get results by specific survey</td>
+<td>any</td>
+<td>No</td>
+</tr>
+<tr>
+<td>from</td>
+<td>string (date)</td>
+<td>Param represents the date FROM which we will count the results. It can be represented as a simple date-string in format of MM-DD-YYYY or by number of milliseconds.</td>
+<td><code>03.10.2022</code>, <code>1655738381328</code></td>
+<td>No</td>
+</tr>
+<tr>
+<td>to</td>
+<td>string (date)</td>
+<td>Param represents the date BEFORE which we will count the results. It can be represented as a simple date-string in format of MM-DD-YYYY or by number of milliseconds.</td>
+<td><code>03.10.2022</code>, <code>1655738381328</code></td>
+<td>No</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>number</td>
+<td>Param represents the specification of the maximum number of survey&#39;s results the query will return.</td>
+<td>any</td>
+<td>No</td>
+</tr>
+<tr>
+<td>skip</td>
+<td>number</td>
+<td>Param represents the specification of the number of survey&#39;s results to skip.</td>
+<td>any</td>
+<td>No</td>
+</tr>
+<tr>
+<td>sort</td>
+<td>string</td>
+<td>Param represents the value that all results will be sorted by. There are two types of sorting: ascending and descending. If you want to sort results in ascending order just specify the value. If you want to sort results in descending order, specify the value and add &#39;-&#39; before the value. Default: <code>-createdAt</code></td>
+<td><code>-createdAt</code>, <code>createdAt</code></td>
+<td>No</td>
+</tr>
+</tbody></table>
+
+<p>Filter params in combination.</p>
+
+<p>As was mentioned before, we can use the combination of the different params to filter survey’s results properly.</p>
+
+<p>For example, if we want to get only 10 results for survey with ID 62a9ac2ccebfa2c48701b38c which comes between 10 March 2022 and 15 March 2022 and sort them by creation date in descending order, the final query will looks like this:</p>
+
+<p>/api/v1/tableau/get-data?surveyId=62a9ac2ccebfa2c48701b38c&amp;from=03.10.2022&amp;to=03.15.2022&amp;limit=10&amp;sort=-createdAt</p>
+
+<p>Reminder
+If you don’t specify any filter, the query will return all survey’s results related to your company for all surveys and sorts by default value -createdAt in descending order.</p>
