@@ -485,7 +485,7 @@ As was mentioned before, we can use the combination of the different params to f
 
 For example, if we want to get only 10 results for survey with ID 62a9ac2ccebfa2c48701b38c which comes between 10 March 2022 and 15 March 2022 and sort them by creation date in descending order, the final query will looks like this:
 
-/api/v1/tableau/get-data?surveyId=62a9ac2ccebfa2c48701b38c&from=03.10.2022&to=03.15.2022&limit=10&sort=-createdAt
+`/api/v1/tableau/get-data?surveyId=62a9ac2ccebfa2c48701b38c&from=03.10.2022&to=03.15.2022&limit=10&sort=-createdAt`
 
 
 
