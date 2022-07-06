@@ -6,7 +6,7 @@
 <p><code>GET /api/v1/tableau/get-data/jwt</code> - JWT browser authorization for testing via browser</p>
 
 <p><code>GET /api/v1/tableau/get-data</code> - Server-to-Server OAuth Bearer token auth</p>
-<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v1/tableau/get-data</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<h2 id='get-data'>Get data</h2><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v1/tableau/get-data</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">https://go.screver.com</span>
