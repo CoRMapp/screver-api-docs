@@ -14,6 +14,7 @@ includes:
   - surveyResults.md
   - webhooks.md
   - tableau.md
+  - skiline.md
 
 search: true
 ---
