@@ -1,3 +1,102 @@
 <h1 id='skiline-integration'>Skiline integration</h1>
 <p>TBD</p>
-<h2 id='connect-widget-callback'>Connect widget callback</h2><h2 id='meta-data'>Meta data</h2>
+<h2 id='connect-widget-callback'>Connect widget callback</h2>
+<p>Instructions how to implement a callback mechanism in a JavaScript web application
+that communicates with both <code>Android</code> and <code>iOS</code> platforms through WebView.</p>
+
+<p>We have implemented a feature that allows our JavaScript web application to communicate with native <code>Android</code> and <code>iOS</code> components using WebView.
+This feature enables seamless data exchange and interaction between the web app and the mobile platforms.</p>
+
+<p>Here&#39;s a step-by-step guide to implementing this feature:</p>
+
+<p><code>1. *** Android Integration ***:</code></p>
+
+<ul>
+<li><p>In <code>Android WebView</code>, enable JavaScript and set up a JavaScript interface that will serve as a bridge between the WebView and native Android code.</p></li>
+<li><p>When developing a web application that&#39;s designed specifically for the WebView in your Android app, you can create interfaces between your JavaScript code and client-side Android code.
+Our <code>Front-end part(JavaScript code)</code> can call a method in your Android code to send data to your app
+For example, you can include the following class in your Android app:</p></li>
+</ul>
+
+<p><code>
+    class WebAppInterface(private val mContext: Context) { <br/>
+        /** reveice data from Screver app  **/ <br/>
+        fun onDataReceived(data) { ... } <br/>
+    }
+</code></p>
+
+<p>In this example, the <code>WebAppInterface</code> class allows the web page to send data, using the <code>onDataReceived()</code> method.</p>
+
+<p>You can bind this class to the JavaScript that runs in your WebView with <code>addJavascriptInterface()</code> and name the interface <code>Android</code>. For example:</p>
+
+<p><code>webView.addJavascriptInterface(WebAppInterface(this), &quot;Android&quot;)</code></p>
+
+<p>On our side we&#39;ll use function:</p>
+
+<p><code>Android.onDataReceived(dataToSend)</code></p>
+
+<p><code>2. *** iOS Integration ***:</code></p>
+
+<ul>
+<li><p>In <code>iOS WebView</code>, configure the WebView to handle JavaScript messages using the <code>WKScriptMessageHandler</code> protocol.</p></li>
+<li><p>Implement the <code>userContentController(_:didReceive:)</code> function in your iOS code to receive and process the JavaScript message.
+Add a script message handler to receive messages from the web app: 
+<code>
+configuration.userContentController.add(self, name: &quot;callbackHandler&quot;)
+</code></p></li>
+</ul>
+
+<p>On our side we&#39;ll use function: </p>
+
+<p><code>window.webkit.messageHandlers.callbackHandler.postMessage(dataToSend)</code></p>
+
+<p><strong>Response</strong></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+ </span><span class="s2">"completed"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+ </span><span class="s2">"statusBarData"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="s2">"passed"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"passedSection"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"total"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"totalSection"</span><span class="p">:</span><span class="mi">3</span><span class="w">
+ </span><span class="p">},</span><span class="w">
+ </span><span class="s2">"answer"</span><span class="p">:{},</span><span class="w">
+ </span><span class="s2">"client"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="s2">"height"</span><span class="p">:</span><span class="s2">"205px"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"deviceId"</span><span class="p">:</span><span class="s2">"1212312"</span><span class="w">
+ </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>completed</td>
+<td>bool</td>
+<td>Survey passed</td>
+</tr>
+<tr>
+<td>client</td>
+<td>object</td>
+<td>client.height - height of Screver widget</td>
+</tr>
+<tr>
+<td>answer</td>
+<td>object</td>
+<td>answers data</td>
+</tr>
+<tr>
+<td>statusBarData</td>
+<td>object</td>
+<td>survey progress data</td>
+</tr>
+<tr>
+<td>meta</td>
+<td>object</td>
+<td>meta params</td>
+</tr>
+</tbody></table>
+<h2 id='meta-data'>Meta data</h2>
