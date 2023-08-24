@@ -61,19 +61,28 @@ Here's a step-by-step guide to implementing this feature:
   "total":3,
   "totalSection":3
  },
- "answer":{},
- "client": {
-  "height":"205px",
-  "deviceId":"1212312"
- }
+ "survey": {
+  "id": "64e752ca97a1131105c9c62a",
+  "name": "Survey name"
+ },
+ "meta": {
+  "name": "User Name"
+ },
+ "answer":{
+  "64ac09a858298c30bb797e5a": {
+    "value": 1
+  }
+ },
+ "height":"205px",
 }
 ```
 
 Parameter | Type | Description |
 --------- | ------- | ----------- |
 completed |bool| Survey passed |
-client |object| client.height - height of Screver widget |
+height |string| height of Screver widget |
 answer |object| answers data |
+survey |object| id - survey id, name - survey name |
 statusBarData |object| survey progress data |
 meta |object| meta params |
 
