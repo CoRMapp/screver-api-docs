@@ -113,8 +113,11 @@ Example query:
 
 `?meta.accessKey=123123`
 
+Only results with correct `meta.accessKey` would init, rest - raise error.
+
 ## Meta variables whitelist
-You can define whitelist of meta-variables, to used in survey form.
+You can define whitelist of meta-variables, to be used in survey answering form.
+Only whitelisted variables would be processed.
 
 Config - survey settings "Meta control" tab.
 Each key would have value (fallback), in case if value would be not mapped from URL params
