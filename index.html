@@ -299,7 +299,16 @@
                     <a href="#connect-widget-callback" class="toc-h2 toc-link" data-title="Connect widget callback">Connect widget callback</a>
                   </li>
                   <li>
-                    <a href="#meta-data" class="toc-h2 toc-link" data-title="Meta data">Meta data</a>
+                    <a href="#meta-data-object" class="toc-h2 toc-link" data-title="Meta data object">Meta data object</a>
+                  </li>
+                  <li>
+                    <a href="#meta-data-access-control" class="toc-h2 toc-link" data-title="Meta data access control">Meta data access control</a>
+                  </li>
+                  <li>
+                    <a href="#meta-variables-whitelist" class="toc-h2 toc-link" data-title="Meta variables whitelist">Meta variables whitelist</a>
+                  </li>
+                  <li>
+                    <a href="#survey-query-params" class="toc-h2 toc-link" data-title="Survey query params">Survey query params</a>
                   </li>
               </ul>
           </li>
@@ -1629,7 +1638,11 @@ Type is related to webhook event.</p>
 <p>Reminder
 If you don’t specify any filter, the query will return all survey’s results related to your company for all surveys and sorts by default value -createdAt in descending order.</p>
 <h1 id='skiline-integration'>Skiline integration</h1>
-<p>TBD</p>
+<p>Data exchange between system provided by metadata params and widget callback.</p>
+
+<p>Callback would send back all result related data on each survey state changes.</p>
+
+<p>Webhook would send all data to endpoint, once survey is completed.</p>
 <h2 id='connect-widget-callback'>Connect widget callback</h2>
 <p>Instructions how to implement a callback mechanism in a JavaScript web application
 that communicates with both <code>Android</code> and <code>iOS</code> platforms through WebView.</p>
@@ -1742,7 +1755,60 @@ configuration.userContentController.add(self, name: &quot;callbackHandler&quot;)
 <td>meta params</td>
 </tr>
 </tbody></table>
-<h2 id='meta-data'>Meta data</h2>
+<h2 id='meta-data-object'>Meta data object</h2>
+<p>Meta data - data could be passed on creation of result, data would be returned back on widget callback or webhook.</p>
+
+<p>Could contain any useful information like userId, timestamp, eventType, etc. - can be used later to aggregate survey results.</p>
+
+<p>Format: URL query object</p>
+
+<p>Example query:</p>
+
+<p><code>?meta.userId=123&amp;meta.timestamp=1692872269&amp;meta.eventType=first_visit</code></p>
+<h2 id='meta-data-access-control'>Meta data access control</h2>
+<p>It is possible to restrict access to survey by meta.</p>
+
+<p>In survey settings &quot;Meta control&quot; tab, you could define meta access key, if activated, then only possible to answer survey, if present <code>meta.accessKey</code> </p>
+
+<p>Example query:</p>
+
+<p><code>?meta.accessKey=123123</code></p>
+<h2 id='meta-variables-whitelist'>Meta variables whitelist</h2>
+<p>You can define whitelist of meta-variables, to used in survey form.</p>
+
+<p>Config - survey settings &quot;Meta control&quot; tab.
+Each key would have value (fallback), in case if value would be not mapped from URL params</p>
+
+<p>Example whitelist:</p>
+
+<p><code>{ firstName: &#39;User&#39;, service: &#39;provider&#39; }</code></p>
+
+<p>Example query:</p>
+
+<p><code>?meta.firstName=John&amp;meta.service=Alturos</code></p>
+
+<p>In result, you can define question like:</p>
+
+<p><code>Hi ${firstName}, please rate our ${service}</code>,</p>
+
+<p>variables data would be taken from URL meta params</p>
+<h2 id='survey-query-params'>Survey query params</h2>
+<p>Survey query params - query params that could modify answering flow for the end user.</p>
+<h3 id='switch-language'>Switch language</h3>
+<p>Query param - &quot;lang&quot;, could override default survey language for the end user, but only if survey have translation for provided language.</p>
+
+<p>Value - locale shortcode.</p>
+
+<p>Example: <code>?lang=de</code></p>
+<h3 id='force-reload-result'>Force reload result</h3>
+<p>If survey have enabled config &quot;allowReload&quot; activated, 
+then it is possible to start new result from same device by pass URL param: &quot;reloadResult&quot;</p>
+
+<p>Example: <code>?reloadResult=true</code></p>
+
+<p>Then new result would be created for the same device, old result would be still keeped in system, but not possible to answer.
+On success initialization - param would be removed from ULR by system.</p>
+
       </div>
       <div class="dark-box">
           <div class="lang-selector">
