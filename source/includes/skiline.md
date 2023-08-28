@@ -1,5 +1,11 @@
 # Skiline integration
-TBD
+Data exchange between system provided by metadata params and widget callback.
+
+
+Callback would send back all result related data on each survey state changes.
+
+
+Webhook would send all data to endpoint, once survey is completed.
 
 ## Connect widget callback
 Instructions how to implement a callback mechanism in a JavaScript web application
@@ -87,4 +93,62 @@ statusBarData |object| survey progress data |
 meta |object| meta params |
 
 
-## Meta data
+## Meta data object
+Meta data - data could be passed on creation of result, data would be returned back on widget callback or webhook.
+
+Could contain any useful information like userId, timestamp, eventType, etc. - can be used later to aggregate survey results.
+
+Format: URL query object
+
+Example query:
+
+`?meta.userId=123&meta.timestamp=1692872269&meta.eventType=first_visit`
+
+## Meta data access control
+It is possible to restrict access to survey by meta.
+
+In survey settings "Meta control" tab, you could define meta access key, if activated, then only possible to answer survey, if present `meta.accessKey` 
+
+Example query:
+
+`?meta.accessKey=123123`
+
+## Meta variables whitelist
+You can define whitelist of meta-variables, to used in survey form.
+
+Config - survey settings "Meta control" tab.
+Each key would have value (fallback), in case if value would be not mapped from URL params
+
+Example whitelist:
+
+`{ firstName: 'User', service: 'provider' }`
+
+
+Example query:
+
+`?meta.firstName=John&meta.service=Alturos`
+
+In result, you can define question like:
+
+`Hi ${firstName}, please rate our ${service}`,
+
+variables data would be taken from URL meta params
+
+## Survey query params
+Survey query params - query params that could modify answering flow for the end user.
+
+### Switch language
+Query param - "lang", could override default survey language for the end user, but only if survey have translation for provided language.
+
+Value - locale shortcode.
+
+Example: `?lang=de`
+
+### Force reload result
+If survey have enabled config "allowReload" activated, 
+then it is possible to start new result from same device by pass URL param: "reloadResult"
+
+Example: `?reloadResult=true`
+
+Then new result would be created for the same device, old result would be still keeped in system, but not possible to answer.
+On success initialization - param would be removed from ULR by system.
