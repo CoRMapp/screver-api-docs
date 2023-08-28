@@ -1773,8 +1773,11 @@ configuration.userContentController.add(self, name: &quot;callbackHandler&quot;)
 <p>Example query:</p>
 
 <p><code>?meta.accessKey=123123</code></p>
+
+<p>Only results with correct <code>meta.accessKey</code> would init, rest - raise error.</p>
 <h2 id='meta-variables-whitelist'>Meta variables whitelist</h2>
-<p>You can define whitelist of meta-variables, to used in survey form.</p>
+<p>You can define whitelist of meta-variables, to be used in survey answering form.
+Only whitelisted variables would be processed.</p>
 
 <p>Config - survey settings &quot;Meta control&quot; tab.
 Each key would have value (fallback), in case if value would be not mapped from URL params</p>
