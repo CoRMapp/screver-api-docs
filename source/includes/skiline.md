@@ -104,7 +104,7 @@ Example query:
 
 `?meta.userId=123&meta.timestamp=1692872269&meta.eventType=first_visit`
 
-## Meta data access control
+### Meta data access control
 It is possible to restrict access to survey by meta.
 
 In survey settings "Meta control" tab, you could define meta access key, if activated, then only possible to answer survey, if present `meta.accessKey` 
@@ -115,7 +115,7 @@ Example query:
 
 Only results with correct `meta.accessKey` would init, rest - raise error.
 
-## Meta variables whitelist
+### Meta variables whitelist
 You can define whitelist of meta-variables, to be used in survey answering form.
 Only whitelisted variables would be processed.
 
