@@ -126,7 +126,7 @@ configuration.userContentController.add(self, name: &quot;callbackHandler&quot;)
 <p>Example query:</p>
 
 <p><code>?meta.userId=123&amp;meta.timestamp=1692872269&amp;meta.eventType=first_visit</code></p>
-<h2 id='meta-data-access-control'>Meta data access control</h2>
+<h3 id='meta-data-access-control'>Meta data access control</h3>
 <p>It is possible to restrict access to survey by meta.</p>
 
 <p>In survey settings &quot;Meta control&quot; tab, you could define meta access key, if activated, then only possible to answer survey, if present <code>meta.accessKey</code> </p>
@@ -136,7 +136,7 @@ configuration.userContentController.add(self, name: &quot;callbackHandler&quot;)
 <p><code>?meta.accessKey=123123</code></p>
 
 <p>Only results with correct <code>meta.accessKey</code> would init, rest - raise error.</p>
-<h2 id='meta-variables-whitelist'>Meta variables whitelist</h2>
+<h3 id='meta-variables-whitelist'>Meta variables whitelist</h3>
 <p>You can define whitelist of meta-variables, to be used in survey answering form.
 Only whitelisted variables would be processed.</p>
 
