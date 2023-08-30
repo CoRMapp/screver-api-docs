@@ -304,6 +304,9 @@
                   <li>
                     <a href="#survey-query-params" class="toc-h2 toc-link" data-title="Survey query params">Survey query params</a>
                   </li>
+                  <li>
+                    <a href="#api-get-list-of-results-by-meta" class="toc-h2 toc-link" data-title="API: Get list of results by meta">API: Get list of results by meta</a>
+                  </li>
               </ul>
           </li>
       </ul>
@@ -1641,7 +1644,8 @@ If you don’t specify any filter, the query will return all survey’s results 
 <p>Instructions how to implement a callback mechanism in a JavaScript web application
 that communicates with both <code>Android</code> and <code>iOS</code> platforms through WebView.</p>
 
-<p>We have implemented a feature that allows our JavaScript web application to communicate with native <code>Android</code> and <code>iOS</code> components using WebView.
+<p>We have implemented a feature that allows our JavaScript web application to communicate with native <code>Android</code> and <code>iOS</code>
+components using WebView.
 This feature enables seamless data exchange and interaction between the web app and the mobile platforms.</p>
 
 <p>Here&#39;s a step-by-step guide to implementing this feature:</p>
@@ -1649,8 +1653,10 @@ This feature enables seamless data exchange and interaction between the web app 
 <p><code>1. *** Android Integration ***:</code></p>
 
 <ul>
-<li><p>In <code>Android WebView</code>, enable JavaScript and set up a JavaScript interface that will serve as a bridge between the WebView and native Android code.</p></li>
-<li><p>When developing a web application that&#39;s designed specifically for the WebView in your Android app, you can create interfaces between your JavaScript code and client-side Android code.
+<li><p>In <code>Android WebView</code>, enable JavaScript and set up a JavaScript interface that will serve as a bridge between the
+WebView and native Android code.</p></li>
+<li><p>When developing a web application that&#39;s designed specifically for the WebView in your Android app, you can create
+interfaces between your JavaScript code and client-side Android code.
 Our <code>Front-end part(JavaScript code)</code> can call a method in your Android code to send data to your app
 For example, you can include the following class in your Android app:</p></li>
 </ul>
@@ -1664,7 +1670,8 @@ For example, you can include the following class in your Android app:</p></li>
 
 <p>In this example, the <code>WebAppInterface</code> class allows the web page to send data, using the <code>onDataReceived()</code> method.</p>
 
-<p>You can bind this class to the JavaScript that runs in your WebView with <code>addJavascriptInterface()</code> and name the interface <code>Android</code>. For example:</p>
+<p>You can bind this class to the JavaScript that runs in your WebView with <code>addJavascriptInterface()</code> and name the
+interface <code>Android</code>. For example:</p>
 
 <p><code>webView.addJavascriptInterface(WebAppInterface(this), &quot;Android&quot;)</code></p>
 
@@ -1676,14 +1683,13 @@ For example, you can include the following class in your Android app:</p></li>
 
 <ul>
 <li><p>In <code>iOS WebView</code>, configure the WebView to handle JavaScript messages using the <code>WKScriptMessageHandler</code> protocol.</p></li>
-<li><p>Implement the <code>userContentController(_:didReceive:)</code> function in your iOS code to receive and process the JavaScript message.
-Add a script message handler to receive messages from the web app: 
-<code>
-configuration.userContentController.add(self, name: &quot;callbackHandler&quot;)
-</code></p></li>
+<li><p>Implement the <code>userContentController(_:didReceive:)</code> function in your iOS code to receive and process the JavaScript
+message.
+Add a script message handler to receive messages from the web app:</p></li>
 </ul>
-
-<p>On our side we&#39;ll use function: </p>
+<pre class="highlight plaintext"><code>    configuration.userContentController.add(self, name: "callbackHandler")
+</code></pre>
+<p>On our side we&#39;ll use function:</p>
 
 <p><code>window.webkit.messageHandlers.callbackHandler.postMessage(dataToSend)</code></p>
 
@@ -1752,7 +1758,8 @@ configuration.userContentController.add(self, name: &quot;callbackHandler&quot;)
 <h2 id='meta-data-object'>Meta data object</h2>
 <p>Meta data - data could be passed on creation of result, data would be returned back on widget callback or webhook.</p>
 
-<p>Could contain any useful information like userId, timestamp, eventType, etc. - can be used later to aggregate survey results.</p>
+<p>Could contain any useful information like userId, timestamp, eventType, etc. - can be used later to aggregate survey
+results.</p>
 
 <p>Format: URL query object</p>
 
@@ -1762,7 +1769,8 @@ configuration.userContentController.add(self, name: &quot;callbackHandler&quot;)
 <h3 id='meta-data-access-control'>Meta data access control</h3>
 <p>It is possible to restrict access to survey by meta.</p>
 
-<p>In survey settings &quot;Meta control&quot; tab, you could define meta access key, if activated, then only possible to answer survey, if present <code>meta.accessKey</code> </p>
+<p>In survey settings &quot;Meta control&quot; tab, you could define meta access key, if activated, then only possible to answer
+survey, if present <code>meta.accessKey</code></p>
 
 <p>Example query:</p>
 
@@ -1792,19 +1800,153 @@ Each key would have value (fallback), in case if value would be not mapped from 
 <h2 id='survey-query-params'>Survey query params</h2>
 <p>Survey query params - query params that could modify answering flow for the end user.</p>
 <h3 id='switch-language'>Switch language</h3>
-<p>Query param - &quot;lang&quot;, could override default survey language for the end user, but only if survey have translation for provided language.</p>
+<p>Query param - &quot;lang&quot;, could override default survey language for the end user, but only if survey have translation for
+provided language.</p>
 
 <p>Value - locale shortcode.</p>
 
 <p>Example: <code>?lang=de</code></p>
 <h3 id='force-reload-result'>Force reload result</h3>
-<p>If survey have enabled config &quot;allowReload&quot; activated, 
+<p>If survey have enabled config &quot;allowReload&quot; activated,
 then it is possible to start new result from same device by pass URL param: &quot;reloadResult&quot;</p>
 
 <p>Example: <code>?reloadResult=true</code></p>
 
-<p>Then new result would be created for the same device, old result would be still keeped in system, but not possible to answer.
+<p>Then new result would be created for the same device, old result would be still keeped in system, but not possible to
+answer.
 On success initialization - param would be removed from ULR by system.</p>
+<h2 id='api-get-list-of-results-by-meta'>API: Get list of results by meta</h2>
+<p>Return list of results by meta query, useful to understand if user had already passed survey, or build custom widget
+depended on answer results.</p>
+<pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/api/v1/survey-results/by-meta</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">https://go.screver.com</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"companyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d1086759513bd03ca00a57a"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"111"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"eventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"first_visit"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>The above request returns the following response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"resources"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"64ef5448afff7fc7c3c7d791"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"completed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"survey"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"64ef5448afff7fc7c3c7d752"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"restaurant visit feedback"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"overallScore"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"111"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"eventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"first_visit"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"campaign"</span><span class="p">:</span><span class="w"> </span><span class="s2">"restaurant"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"answer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"64ef5448afff7fc7c3c7d789"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-08-30T14:38:00.898Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"scorePoints"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"64ef5448afff7fc7c3c7d790"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"completed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"survey"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"64ef5448afff7fc7c3c7d752"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"restaurant visit feedback"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"overallScore"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"111"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"eventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"first_visit"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"campaign"</span><span class="p">:</span><span class="w"> </span><span class="s2">"restaurant"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"answer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"64ef5448afff7fc7c3c7d78b"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-08-30T14:38:00.892Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"scorePoints"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request'>HTTP Request</h3>
+<p><code>POST /api/v1/survey-results/by-meta</code></p>
+<h3 id='body'>Body</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Valid</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>companyId</td>
+<td>string</td>
+<td>Screver Company ID.</td>
+<td>any</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>meta</td>
+<td>object</td>
+<td>Meta object - linked to results data. Example meta: { userId: &#39;123&#39;, eventType: &#39;first_visit&#39; }</td>
+<td>obj min keys: 1</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>surveyId</td>
+<td>string</td>
+<td>Filter results by surveyId</td>
+<td>any</td>
+<td>No</td>
+</tr>
+<tr>
+<td>skip</td>
+<td>number</td>
+<td>Count of skipped items for pagination.</td>
+<td>any</td>
+<td>No</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>number</td>
+<td>Count of returned items in response. Default: 50</td>
+<td><code>5</code>, <code>50</code>, <code>100</code></td>
+<td>No</td>
+</tr>
+<tr>
+<td>from</td>
+<td>date</td>
+<td>Filtering results by date &quot;from&quot;. Example: { from: &#39;2023-08-29T14:58:26.179Z&#39; }</td>
+<td>any</td>
+<td>No</td>
+</tr>
+<tr>
+<td>to</td>
+<td>date</td>
+<td>Filtering results by date &quot;to&quot;. Example: { to: &#39;2023-08-31T14:58:26.180Z&#39; }</td>
+<td>any</td>
+<td>No</td>
+</tr>
+</tbody></table>
 
       </div>
       <div class="dark-box">
