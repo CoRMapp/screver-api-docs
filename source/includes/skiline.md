@@ -182,7 +182,7 @@ Host: https://go.screver.com
 
 ```json
 {
-  "companyId": "5d1086759513bd03ca00a57a",
+  "companyId": "64e72bac2475473a59e4ba95",
   "meta": {
     "userId": "111",
     "eventType": "first_visit"
