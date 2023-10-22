@@ -1948,7 +1948,8 @@ depended on answer results.</p>
 </tr>
 </tbody></table>
 <h3 id='response-schema'>Response schema</h3>
-<p>Base response is JSON object with 2 keys, total - number of all results matched by query, resources - array of results
+<p>Base response is JSON object with 2 keys, <strong>total</strong> - number of all results matched by query, <strong>resources</strong> - array of
+results.
 Bellow is schema of each result element:</p>
 
 <table><thead>
@@ -1966,7 +1967,7 @@ Bellow is schema of each result element:</p>
 <tr>
 <td>endStatus</td>
 <td>object</td>
-<td>Object that cointain end status information: completedAt - date when result had been comleted, endPage - content object, matched by flow logic, statusCode - string status code received from endPage.</td>
+<td>Object that cointain end status information: <strong>completedAt</strong> - date when result had been comleted, <strong>endPage</strong> - content object, matched by flow logic, <strong>statusCode</strong> - string status code received from endPage.</td>
 </tr>
 <tr>
 <td>completed</td>
@@ -1981,7 +1982,7 @@ Bellow is schema of each result element:</p>
 <tr>
 <td>survey</td>
 <td>object</td>
-<td>Survey object: _id - survey ID, name - survey localization name object, overallScore - survey max scoring.</td>
+<td>Survey object: _<strong>id</strong> - survey ID, <strong>name</strong> - survey localization name object, <strong>overallScore</strong> - survey max scoring.</td>
 </tr>
 <tr>
 <td>answer</td>
@@ -2000,9 +2001,11 @@ Bellow is schema of each result element:</p>
 </tr>
 </tbody></table>
 
-<p>For the next results data processing Screver prepare &quot;answerProcessed&quot; parsed object that contain all related data of survey and questions.
-Each key of object is &quot;surveyItemId&quot; - unique ID of survey element that contain question data and other configurations.
-Bellow is schema of each &quot;surveyItemId&quot; object element in &quot;answerProcessed&quot;:</p>
+<p>For the next results data processing Screver provide &quot;answerProcessed&quot; parsed object that contain all related data of
+survey and questions.
+Each key of object is <strong>&quot;surveyItemId&quot;</strong> - unique ID of survey element that contain question data and other
+configurations.
+Bellow is schema of each <strong>&quot;surveyItemId&quot;</strong> object element in <strong>&quot;answerProcessed&quot;</strong>:</p>
 
 <table><thead>
 <tr>
@@ -2014,7 +2017,7 @@ Bellow is schema of each &quot;surveyItemId&quot; object element in &quot;answer
 <tr>
 <td>questionType</td>
 <td>string</td>
-<td>Type of question, list of possible types: &#39;countryList&#39;, &#39;text&#39;, &#39;multipleChoice&#39;, &#39;checkboxes&#39;, &#39;dropdown&#39;, &#39;linearScale&#39;, &#39;thumbs&#39;, &#39;netPromoterScore&#39;, &#39;slider&#39;, &#39;multipleChoiceMatrix&#39;, &#39;checkboxMatrix&#39;, &#39;imageChoice&#39;, &#39;multipleScale&#39;, &#39;order&#39;, &#39;ces&#39;, &#39;csat&#39;.</td>
+<td>Type of question, list of possible types: <strong>&#39;countryList&#39;, &#39;text&#39;, &#39;multipleChoice&#39;, &#39;checkboxes&#39;, &#39;dropdown&#39;, &#39;linearScale&#39;, &#39;thumbs&#39;, &#39;netPromoterScore&#39;, &#39;slider&#39;, &#39;multipleChoiceMatrix&#39;, &#39;checkboxMatrix&#39;, &#39;imageChoice&#39;, &#39;multipleScale&#39;, &#39;order&#39;, &#39;ces&#39;, &#39;csat&#39;</strong>.</td>
 </tr>
 <tr>
 <td>questionName</td>
@@ -2024,12 +2027,12 @@ Bellow is schema of each &quot;surveyItemId&quot; object element in &quot;answer
 <tr>
 <td>surveyTags</td>
 <td>array</td>
-<td>Array of tags attached to the survey</td>
+<td>Array of tags attached to the survey.</td>
 </tr>
 <tr>
 <td>questionTags</td>
 <td>array</td>
-<td>Array of tags attached to the question</td>
+<td>Array of tags attached to the question.</td>
 </tr>
 <tr>
 <td>optionTags</td>
@@ -2049,7 +2052,7 @@ Bellow is schema of each &quot;surveyItemId&quot; object element in &quot;answer
 <tr>
 <td>value</td>
 <td>array / string / object</td>
-<td>Proccessed value, could be array / string / object, depends on question type. If question type is text - contain string data, in other cases could be object or array of objects that contain selected options data, keys: value - id of selected option, valueLabel - option localization name object, optionTags - array of tags attached to the selected question options.</td>
+<td>Proccessed value, could be array / string / object, depends on question type. If question type is text - contain string data, in other cases could be object or array of objects that contain selected options data, keys: <strong>value</strong> - id of selected option, <strong>valueLabel</strong> - option localization name object, <strong>optionTags</strong> - array of tags attached to the selected question options.</td>
 </tr>
 </tbody></table>
 
