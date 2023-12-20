@@ -169,6 +169,47 @@ Then new result would be created for the same device, old result would be still 
 answer.
 On success initialization - param would be removed from ULR by system.
 
+### Allow execute meta query (survey multi-sessions per one device)
+
+By default, Screver support only one session per survey and device,
+Company level config "allowExecuteMetaQuery" could extend this behavior,
+if "allowExecuteMetaQuery" flag is active, then would be possible to "load" prev. results that are matched by meta params.
+
+**Usage examples**:
+
+User have 3 different survey results, passed once per day.
+
+Example meta params for results initialization:
+
+1st day: `?meta.userId=1&meta.date=01.12.23`
+
+2nd day: `?meta.userId=1&meta.date=02.12.23`
+
+3rd day: `?meta.userId=1&meta.date=03.12.23`.
+
+
+Now would be possible to load and modify "old" sessions with new URL flag **executeMetaQuery**:
+
+URL with following params, would open 1st day session in browser - result ready for modifications:
+
+`?meta.userId=1&meta.date=01.12.23&executeMetaQuery=true`
+
+Load result for 2nd day:
+
+`?meta.userId=1&meta.date=02.12.23&executeMetaQuery=true`
+
+At the same time your current session without **executeMetaQuery** would remain the same, no actions needed.
+
+**NOTE**: all meta params that had been passed to result on initialization stage,
+should be present in URL with **executeMetaQuery** flag.
+
+If meta-query had not matched prev. result, default browser session would be loaded inside.
+
+Example:
+
+Not full meta-query: (**meta.userId** is not present) would load current browser session.
+`?meta.date=02.12.23&executeMetaQuery=true`
+
 ## API: Get list of results by meta
 
 Return list of results by meta query, useful to understand if user had already passed survey, or build custom widget
