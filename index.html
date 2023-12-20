@@ -1815,6 +1815,44 @@ then it is possible to start new result from same device by pass URL param: &quo
 <p>Then new result would be created for the same device, old result would be still keeped in system, but not possible to
 answer.
 On success initialization - param would be removed from ULR by system.</p>
+<h3 id='allow-execute-meta-query-survey-multi-sessions-per-one-device'>Allow execute meta query (survey multi-sessions per one device)</h3>
+<p>By default, Screver support only one session per survey and device,
+Company level config &quot;allowExecuteMetaQuery&quot; could extend this behavior,
+if &quot;allowExecuteMetaQuery&quot; flag is active, then would be possible to &quot;load&quot; prev. results that are matched by meta params.</p>
+
+<p><strong>Usage examples</strong>:</p>
+
+<p>User have 3 different survey results, passed once per day.</p>
+
+<p>Example meta params for results initialization:</p>
+
+<p>1st day: <code>?meta.userId=1&amp;meta.date=01.12.23</code></p>
+
+<p>2nd day: <code>?meta.userId=1&amp;meta.date=02.12.23</code></p>
+
+<p>3rd day: <code>?meta.userId=1&amp;meta.date=03.12.23</code>.</p>
+
+<p>Now would be possible to load and modify &quot;old&quot; sessions with new URL flag <strong>executeMetaQuery</strong>:</p>
+
+<p>URL with following params, would open 1st day session in browser - result ready for modifications:</p>
+
+<p><code>?meta.userId=1&amp;meta.date=01.12.23&amp;executeMetaQuery=true</code></p>
+
+<p>Load result for 2nd day:</p>
+
+<p><code>?meta.userId=1&amp;meta.date=02.12.23&amp;executeMetaQuery=true</code></p>
+
+<p>At the same time your current session without <strong>executeMetaQuery</strong> would remain the same, no actions needed.</p>
+
+<p><strong>NOTE</strong>: all meta params that had been passed to result on initialization stage,
+should be present in URL with <strong>executeMetaQuery</strong> flag.</p>
+
+<p>If meta-query had not matched prev. result, default browser session would be loaded inside.</p>
+
+<p>Example:</p>
+
+<p>Not full meta-query: (<strong>meta.userId</strong> is not present) would load current browser session.
+<code>?meta.date=02.12.23&amp;executeMetaQuery=true</code></p>
 <h2 id='api-get-list-of-results-by-meta'>API: Get list of results by meta</h2>
 <p>Return list of results by meta query, useful to understand if user had already passed survey, or build custom widget
 depended on answer results.</p>
