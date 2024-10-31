@@ -109,42 +109,65 @@ Content-Type: application/json
 ```json
 {
   "_id": "5d0b985960a1da78cf8f4a57",
-  "translation": { "en": true, "de": false, "ru": false, "nl": false },
-  "name": { "en": "repellat" },
-  "description": { "en": "consequuntur" },
+  "translation": {
+    "en": true,
+    "de": false,
+    "ru": false,
+    "nl": false
+  },
+  "name": {
+    "en": "repellat"
+  },
+  "description": {
+    "en": "consequuntur"
+  },
   "urlName": "repellat",
   "startDate": "2019-06-20T14:29:45.524Z",
   "endDate": "2019-06-30T14:29:45.525Z",
   "createdAt": "2019-06-20T14:29:45.538Z",
   "updatedAt": "2019-06-20T14:29:45.538Z",
-  "surveySections":
-    [
-      {
-        "_id":"5d1086759513bd03ca00a579",
-        "name": { "en": "fugiat" },
-        "survey": "5d1086759513bd03ca00a578",
-        "createdBy": "5d1086759513bd03ca00a575",
-        "updatedBy":"5d1086759513bd03ca00a575",
-        "surveyItems": [
-          {
-            "_id": "5d1086759513bd03ca00a57a",
-            "type": "question",
-            "required": false,
-            "survey": "5d1086759513bd03ca00a578",
-            "surveySection": "5d1086759513bd03ca00a579",
-            "question": {
-              "_id": "5d1086759513bd03ca00a57b",
-              "translation": { "en": true, "de": false, "ru": false, "nl": false },
-              "linearScale": { "from": 1, "to": 5, "icon": "smiley" },
-              "type": "linearScale",
-              "name": { "en": "cupiditate" },
-              "createdBy": "5d1086759513bd03ca00a575",
-              "updatedBy": "5d1086759513bd03ca00a575"
-            }
+  "surveySections": [
+    {
+      "_id": "5d1086759513bd03ca00a579",
+      "name": {
+        "en": "fugiat"
+      },
+      "survey": "5d1086759513bd03ca00a578",
+      "createdBy": "5d1086759513bd03ca00a575",
+      "updatedBy": "5d1086759513bd03ca00a575",
+      "surveyItems": [
+        {
+          "_id": "5d1086759513bd03ca00a57a",
+          "type": "question",
+          "required": false,
+          "survey": "5d1086759513bd03ca00a578",
+          "surveySection": "5d1086759513bd03ca00a579",
+          "question": {
+            "_id": "5d1086759513bd03ca00a57b",
+            "translation": {
+              "en": true,
+              "de": false,
+              "ru": false,
+              "nl": false
+            },
+            "linearScale": {
+              "from": 1,
+              "to": 5,
+              "icon": "smiley"
+            },
+            "type": "linearScale",
+            "name": {
+              "en": "cupiditate"
+            },
+            "createdBy": "5d1086759513bd03ca00a575",
+            "updatedBy": "5d1086759513bd03ca00a575"
           }
-        ]
-      }
-    ]
+        }
+      ]
+    }
+  ],
+  "startPages": [],
+  "endPages": []
 }
 ```
 
