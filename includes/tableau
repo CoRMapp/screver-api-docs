@@ -492,7 +492,7 @@
 <td>limit</td>
 <td>number</td>
 <td>Param represents the specification of the maximum number of survey&#39;s results the query will return.</td>
-<td>any</td>
+<td>&lt; 100, 100 - default</td>
 <td>No</td>
 </tr>
 <tr>
