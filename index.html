@@ -241,9 +241,6 @@
                     <a href="#step-4-submit-answers" class="toc-h2 toc-link" data-title="Step 4. Submit answers">Step 4. Submit answers</a>
                   </li>
                   <li>
-                    <a href="#answer-object-schema-by-question-type" class="toc-h2 toc-link" data-title="Answer object schema by question type">Answer object schema by question type</a>
-                  </li>
-                  <li>
                     <a href="#step-5-step-navigation" class="toc-h2 toc-link" data-title="Step 5. Step navigation">Step 5. Step navigation</a>
                   </li>
                   <li>
@@ -384,6 +381,12 @@ You must replace <code>u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</code> with the access t
 
 <p>Public endpoints do not require OAuth token.<br>
 Base path: <code>/api/v1</code></p>
+
+<p>This section focuses on the public runtime flow only:
+- <code>GET /api/v1/surveys/:companyUrlName/:surveyUrlName</code>
+- <code>POST/GET/PUT /api/v1/survey-answers...</code></p>
+
+<p><code>token</code> fields shown below are for private/invite flows and can be ignored for standard public-link integrations.</p>
 <h2 id='step-1-load-public-survey-base'>Step 1. Load public survey base</h2>
 <p>Use company and survey URL names to load public survey configuration before starting the answer flow.</p>
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v1/surveys/acme/customer-satisfaction</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
@@ -486,7 +489,7 @@ This call is required before requesting current step.</p>
 <tr>
 <td>token</td>
 <td>string</td>
-<td>Token for private survey flow.</td>
+<td>Private/invite flow only. Not required for standard public links.</td>
 <td>Conditionally</td>
 </tr>
 <tr>
@@ -593,7 +596,7 @@ This call is required before requesting current step.</p>
 <tr>
 <td>token</td>
 <td>string</td>
-<td>Token for private flow.</td>
+<td>Private/invite flow only. Not required for standard public links.</td>
 <td>Conditionally</td>
 </tr>
 <tr>
@@ -695,7 +698,7 @@ This call is required before requesting current step.</p>
 <tr>
 <td>token</td>
 <td>string</td>
-<td>Token for private flow.</td>
+<td>Private/invite flow only. Not required for standard public links.</td>
 <td>Conditionally</td>
 </tr>
 <tr>
@@ -741,7 +744,7 @@ This call is required before requesting current step.</p>
 <td>No</td>
 </tr>
 </tbody></table>
-<h2 id='answer-object-schema-by-question-type'>Answer object schema by question type</h2>
+<h3 id='step-4a-answer-object-schema-by-question-type'>Step 4A. Answer object schema by question type</h3>
 <p><code>answer</code> is always a map where key is <code>surveyItemId</code>:</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"answer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -963,7 +966,7 @@ If payload includes items from another step, backend returns <code>422 Unprocess
 <tr>
 <td>token</td>
 <td>string</td>
-<td>Token for private flow.</td>
+<td>Private/invite flow only. Not required for standard public links.</td>
 <td>Conditionally</td>
 </tr>
 <tr>
