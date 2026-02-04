@@ -542,13 +542,12 @@ If payload includes items from another step, backend returns <code>422 Unprocess
 <ul>
 <li><code>text</code> + <code>input=email</code>: must be a valid email.</li>
 <li><code>text</code> + <code>input=number</code>: must be numeric (float/integer accepted by backend validation).</li>
-<li><code>text</code> + <code>input=date</code>: value is a string, format depends on <code>question.dateParams.type</code>:
+<li><code>text</code> + <code>input=date</code>: value is sent as a serialized string:
 
 <ul>
-<li><code>date</code>: <code>YYYY-MM-DD</code></li>
-<li><code>dateAndTime</code>: <code>YYYY-MM-DD-HH:mm</code></li>
-<li><code>range</code>: <code>YYYY-MM-DD-YYYY-MM-DD</code></li>
-<li><code>rangeAndTime</code>: <code>YYYY-MM-DD-HH:mm-YYYY-MM-DD-HH:mm</code></li>
+<li><code>&lt;startDate&gt;-&lt;startTime&gt;-&lt;endDate&gt;-&lt;endTime&gt;</code></li>
+<li>Empty parts are allowed for simpler date modes.</li>
+<li>Actual date/time formatting is controlled by survey settings (<code>question.dateParams.dateFormat</code> and <code>timeFormat</code>).</li>
 </ul></li>
 </ul>
 <h4 id='minimal-end-to-end-flow'>Minimal end-to-end flow</h4>
@@ -629,6 +628,8 @@ If payload includes items from another step, backend returns <code>422 Unprocess
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='get-answer-result'>Get answer result</h3>
 <p><code>GET /api/v1/survey-answers/result</code></p>
+
+<p>Returns <code>400</code> if survey result display is disabled (<code>survey.showAnswerResult = false</code>).</p>
 
 <p>Typical query:</p>
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v1/survey-answers/result?surveyId=66f7d9db2a1f66d5c3f5e901&amp;publicSign=eyJhbGciOi...</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
