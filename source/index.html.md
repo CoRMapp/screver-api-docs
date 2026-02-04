@@ -9,6 +9,7 @@ toc_footers:
 
 includes:
   - authentication.md
+  - publicApi.md
   - surveys.md
   - surveyItems.md
   - surveyResults.md
