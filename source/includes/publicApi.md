@@ -383,11 +383,10 @@ Content-Type: application/json
 
 - `text` + `input=email`: must be a valid email.
 - `text` + `input=number`: must be numeric (float/integer accepted by backend validation).
-- `text` + `input=date`: value is a string, format depends on `question.dateParams.type`:
-  - `date`: `YYYY-MM-DD`
-  - `dateAndTime`: `YYYY-MM-DD-HH:mm`
-  - `range`: `YYYY-MM-DD-YYYY-MM-DD`
-  - `rangeAndTime`: `YYYY-MM-DD-HH:mm-YYYY-MM-DD-HH:mm`
+- `text` + `input=date`: value is sent as a serialized string:
+  - `<startDate>-<startTime>-<endDate>-<endTime>`
+  - Empty parts are allowed for simpler date modes.
+  - Actual date/time formatting is controlled by survey settings (`question.dateParams.dateFormat` and `timeFormat`).
 
 #### Minimal end-to-end flow
 
@@ -452,6 +451,8 @@ Request body example:
 
 ### Get answer result
 `GET /api/v1/survey-answers/result`
+
+Returns `400` if survey result display is disabled (`survey.showAnswerResult = false`).
 
 Typical query:
 
