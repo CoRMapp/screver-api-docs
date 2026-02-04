@@ -1,0 +1,644 @@
+<h1 id='public-api-custom-client'>Public API (Custom Client)</h1>
+<p>This section describes the public survey flow for building your own custom client (web, mobile, kiosk, or backend integration).</p>
+
+<p>Public endpoints do not require OAuth token.<br>
+Base path: <code>/api/v1</code></p>
+<h2 id='step-1-load-public-survey-base'>Step 1. Load public survey base</h2>
+<p>Use company and survey URL names to load public survey configuration before starting the answer flow.</p>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v1/surveys/acme/customer-satisfaction</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">https://go.screver.com</span>
+</code></pre>
+<blockquote>
+<p>The above request returns the following response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"66f7d9db2a1f66d5c3f5e901"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"urlName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"customer-satisfaction"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Customer Satisfaction Survey"</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please share your feedback"</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"defaultLanguage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"translation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="s2">"de"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"disableTrackingLocation"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"cookiesCheck"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"surveyTheme"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"66f7d9db2a1f66d5c3f5e777"</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"metaVariablesList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"userId"</span><span class="p">,</span><span class="w"> </span><span class="s2">"campaignId"</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"globalMeta"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"userId"</span><span class="p">,</span><span class="w"> </span><span class="s2">"campaignId"</span><span class="p">,</span><span class="w"> </span><span class="s2">"source"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request'>HTTP Request</h3>
+<p><code>GET /api/v1/surveys/:companyUrlName/:surveyUrlName</code></p>
+<h3 id='parameters'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>companyUrlName</td>
+<td>string</td>
+<td>Company URL slug.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>surveyUrlName</td>
+<td>string</td>
+<td>Survey URL slug.</td>
+<td>Yes</td>
+</tr>
+</tbody></table>
+<h3 id='notes'>Notes</h3>
+<ul>
+<li>Returns <code>404</code> if company or survey does not exist.</li>
+<li>If survey is outside active dates, response can still return survey object with <code>message</code> explaining availability status.</li>
+</ul>
+<h2 id='step-2-initialize-or-restore-survey-answer-session'>Step 2. Initialize (or restore) survey answer session</h2>
+<p>Create or load current survey-answer session.<br>
+This call is required before requesting current step.</p>
+<pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/api/v1/survey-answers</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">https://go.screver.com</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"surveyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"66f7d9db2a1f66d5c3f5e901"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"referrer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://your-client.example/start"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"lang"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"u-123"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"campaignId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"spring-2026"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"executeMetaQuery"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"assets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"66f7da832a1f66d5c3f5ea10"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>The above request returns the following response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">x-public-sign</span><span class="p">:</span> <span class="s">eyJhbGciOi...</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"66f7db5d2a1f66d5c3f5ec42"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"surveyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"66f7d9db2a1f66d5c3f5e901"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"completed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request-2'>HTTP Request</h3>
+<p><code>POST /api/v1/survey-answers</code></p>
+<h3 id='body-parameters'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>surveyId</td>
+<td>string (ObjectId)</td>
+<td>Survey ID. Required when <code>token</code> is not provided.</td>
+<td>Conditionally</td>
+</tr>
+<tr>
+<td>token</td>
+<td>string</td>
+<td>Token for private survey flow.</td>
+<td>Conditionally</td>
+</tr>
+<tr>
+<td>referrer</td>
+<td>string</td>
+<td>Referrer URL of embedding page/client.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>assets</td>
+<td>string or array</td>
+<td>Asset ID or list of asset IDs.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>lang</td>
+<td>string</td>
+<td>Language key from supported localization list.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>meta</td>
+<td>object</td>
+<td>Custom metadata linked with survey result.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>executeMetaQuery</td>
+<td>boolean</td>
+<td>Enables backend meta processing logic.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>reloadResult</td>
+<td>boolean</td>
+<td>Force result reload behavior.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>targetId</td>
+<td>string</td>
+<td>Optional target identifier.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>answer</td>
+<td>object</td>
+<td>Optional predefined answer map by survey item ID.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='notes-2'>Notes</h3>
+<ul>
+<li>Save <code>x-public-sign</code> header and send it in next API calls as <code>publicSign</code> parameter.</li>
+<li>Your client can safely call this endpoint multiple times to restore existing progress.</li>
+</ul>
+<h2 id='step-3-load-current-survey-step'>Step 3. Load current survey step</h2>
+<p>Request current survey structure (section, items, status) for rendering in your client.</p>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v1/survey-answers?surveyId=66f7d9db2a1f66d5c3f5e901&amp;lang=en&amp;publicSign=eyJhbGciOi...</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">https://go.screver.com</span>
+</code></pre>
+<blockquote>
+<p>The above request returns the following response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"survey"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"66f7d9db2a1f66d5c3f5e901"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"surveySection"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"66f7dc392a1f66d5c3f5ed11"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"surveyItems"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"statusBarData"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"currentStep"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalSteps"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"answer"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="s2">"allowReAnswer"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"isPreview"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"html"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"completed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET /api/v1/survey-answers</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>surveyId</td>
+<td>string (ObjectId)</td>
+<td>Survey ID. Required when <code>token</code> is not provided.</td>
+<td>Conditionally</td>
+</tr>
+<tr>
+<td>token</td>
+<td>string</td>
+<td>Token for private flow.</td>
+<td>Conditionally</td>
+</tr>
+<tr>
+<td>publicSign</td>
+<td>string</td>
+<td>Public sign from init response header.</td>
+<td>Recommended</td>
+</tr>
+<tr>
+<td>lang</td>
+<td>string</td>
+<td>Language for rendered labels/content.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>meta</td>
+<td>object</td>
+<td>Metadata object.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>executeMetaQuery</td>
+<td>boolean</td>
+<td>Enables backend meta processing logic.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>deviceId</td>
+<td>string</td>
+<td>Device ID for loading device-linked session.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>assets</td>
+<td>string or array</td>
+<td>Asset ID(s).</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h2 id='step-4-submit-answers'>Step 4. Submit answers</h2>
+<p>Send answers for current step or for single-question autosave mode.</p>
+<pre class="highlight http tab-http"><code><span class="nf">PUT</span> <span class="nn">/api/v1/survey-answers</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">https://go.screver.com</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"surveyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"66f7d9db2a1f66d5c3f5e901"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"publicSign"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJhbGciOi..."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"lang"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"changeStep"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"answer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"66f7dd222a1f66d5c3f5ef03"</span><span class="p">:</span><span class="w"> </span><span class="s2">"66f7dd352a1f66d5c3f5ef2b"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"66f7dd902a1f66d5c3f5ef7f"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"66f7de0f2a1f66d5c3f5efd1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"yes"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"66f7de0f2a1f66d5c3f5efd1_customAnswer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Other custom value"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"useragent"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"isDesktop"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"isMobile"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"isTablet"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"u-123"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>The above request returns the following response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"survey"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="s2">"statusBarData"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"currentStep"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s2">"totalSteps"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"quizResult"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="s2">"answer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"66f7dd902a1f66d5c3f5ef7f"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"u-123"</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"completed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request-4'>HTTP Request</h3>
+<p><code>PUT /api/v1/survey-answers</code></p>
+<h3 id='body-parameters-2'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>surveyId</td>
+<td>string (ObjectId)</td>
+<td>Survey ID. Required when <code>token</code> is not provided.</td>
+<td>Conditionally</td>
+</tr>
+<tr>
+<td>token</td>
+<td>string</td>
+<td>Token for private flow.</td>
+<td>Conditionally</td>
+</tr>
+<tr>
+<td>publicSign</td>
+<td>string</td>
+<td>Public sign from init response header.</td>
+<td>Recommended</td>
+</tr>
+<tr>
+<td>answer</td>
+<td>object</td>
+<td>Map by survey item id. Value can be string, number, array, matrix-object items, or <code>_customAnswer*</code> fields.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>changeStep</td>
+<td>boolean</td>
+<td><code>true</code> to move to next step, <code>false</code> or omitted for same-step save.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>lang</td>
+<td>string</td>
+<td>Language key.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>meta</td>
+<td>object</td>
+<td>Metadata object.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>executeMetaQuery</td>
+<td>boolean</td>
+<td>Enables backend meta processing logic.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>useragent</td>
+<td>object</td>
+<td>Optional device flags (<code>isDesktop</code>, <code>isMobile</code>, <code>isTablet</code>).</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h2 id='answer-object-schema-by-question-type'>Answer object schema by question type</h2>
+<p><code>answer</code> is always a map where key is <code>surveyItemId</code>:</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"answer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"&lt;surveyItemId&gt;"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;value&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"&lt;surveyItemId&gt;_customAnswer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"optional custom text"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>How to get <code>surveyItemId</code>:
+- From Screver UI (survey editor).
+- From Bearer-protected survey endpoints in this documentation (v2 survey structure block).</p>
+<h3 id='value-format-per-question-type'>Value format per <code>question.type</code></h3>
+<table><thead>
+<tr>
+<th>Question type</th>
+<th><code>answer[surveyItemId]</code> format</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>multipleChoice</td>
+<td>string (<code>questionItemId</code>)</td>
+<td><code>&quot;66f...itemId&quot;</code></td>
+</tr>
+<tr>
+<td>dropdown</td>
+<td>string (<code>questionItemId</code>)</td>
+<td><code>&quot;66f...itemId&quot;</code></td>
+</tr>
+<tr>
+<td>imageChoice</td>
+<td>string (<code>questionItemId</code>)</td>
+<td><code>&quot;66f...itemId&quot;</code></td>
+</tr>
+<tr>
+<td>checkboxes</td>
+<td>string<a href="`questionItemId[]`"></a></td>
+<td><code>[&quot;66f...a&quot;, &quot;66f...b&quot;]</code></td>
+</tr>
+<tr>
+<td>linearScale</td>
+<td>number</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td>slider</td>
+<td>number</td>
+<td><code>8</code></td>
+</tr>
+<tr>
+<td>netPromoterScore</td>
+<td>number</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td>ces</td>
+<td>number</td>
+<td><code>4</code></td>
+</tr>
+<tr>
+<td>csat</td>
+<td>number</td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td>thumbs</td>
+<td>string</td>
+<td><code>&quot;yes&quot;</code> or <code>&quot;no&quot;</code></td>
+</tr>
+<tr>
+<td>text</td>
+<td>string</td>
+<td><code>&quot;Free text answer&quot;</code></td>
+</tr>
+<tr>
+<td>countryList</td>
+<td>string (country id)</td>
+<td><code>&quot;66f...countryId&quot;</code></td>
+</tr>
+<tr>
+<td>multipleChoiceMatrix</td>
+<td>array of objects</td>
+<td><code>[{&quot;row&quot;:&quot;&lt;gridRowId&gt;&quot;,&quot;column&quot;:&quot;&lt;gridColumnId&gt;&quot;}]</code></td>
+</tr>
+<tr>
+<td>checkboxMatrix</td>
+<td>array of objects</td>
+<td><code>[{&quot;row&quot;:&quot;&lt;gridRowId&gt;&quot;,&quot;column&quot;:&quot;&lt;gridColumnId&gt;&quot;},{&quot;row&quot;:&quot;&lt;gridRowId2&gt;&quot;,&quot;column&quot;:&quot;&lt;gridColumnId2&gt;&quot;}]</code></td>
+</tr>
+<tr>
+<td>multipleScale</td>
+<td>array of objects</td>
+<td><code>[{&quot;questionItem&quot;:&quot;&lt;questionItemId&gt;&quot;,&quot;value&quot;:3}]</code></td>
+</tr>
+<tr>
+<td>order</td>
+<td>array of objects</td>
+<td><code>[{&quot;questionItem&quot;:&quot;&lt;questionItemId&gt;&quot;,&quot;value&quot;:1},{&quot;questionItem&quot;:&quot;&lt;questionItemId2&gt;&quot;,&quot;value&quot;:2}]</code></td>
+</tr>
+</tbody></table>
+<h3 id='custom-answer-field'>Custom answer field</h3>
+<p>For question types with an &quot;Other / custom&quot; option, send an additional key:</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"answer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"66f7dd222a1f66d5c3f5ef03"</span><span class="p">:</span><span class="w"> </span><span class="s2">"66f7dd352a1f66d5c3f5ef2b"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"66f7dd222a1f66d5c3f5ef03_customAnswer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My custom option"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='exact-answer-examples-by-type'>Exact answer examples by type</h3><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"answer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"surveyItemId_multipleChoice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"questionItemId"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"surveyItemId_dropdown"</span><span class="p">:</span><span class="w"> </span><span class="s2">"questionItemId"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"surveyItemId_imageChoice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"questionItemId"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"surveyItemId_checkboxes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"questionItemId_1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"questionItemId_2"</span><span class="p">],</span><span class="w">
+    </span><span class="s2">"surveyItemId_linearScale"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"surveyItemId_slider"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"surveyItemId_netPromoterScore"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"surveyItemId_ces"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"surveyItemId_csat"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"surveyItemId_thumbs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"yes"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"surveyItemId_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Some free text"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"surveyItemId_countryList"</span><span class="p">:</span><span class="w"> </span><span class="s2">"countryId"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"surveyItemId_multipleChoiceMatrix"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="s2">"row"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gridRowId_1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"column"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gridColumnId_2"</span><span class="w"> </span><span class="p">}],</span><span class="w">
+    </span><span class="s2">"surveyItemId_checkboxMatrix"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="s2">"row"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gridRowId_1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"column"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gridColumnId_2"</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="s2">"row"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gridRowId_2"</span><span class="p">,</span><span class="w"> </span><span class="s2">"column"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gridColumnId_1"</span><span class="w"> </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"surveyItemId_multipleScale"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="s2">"questionItem"</span><span class="p">:</span><span class="w"> </span><span class="s2">"questionItemId_1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="s2">"questionItem"</span><span class="p">:</span><span class="w"> </span><span class="s2">"questionItemId_2"</span><span class="p">,</span><span class="w"> </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"surveyItemId_order"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="s2">"questionItem"</span><span class="p">:</span><span class="w"> </span><span class="s2">"questionItemId_1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="s2">"questionItem"</span><span class="p">:</span><span class="w"> </span><span class="s2">"questionItemId_2"</span><span class="p">,</span><span class="w"> </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"surveyItemId_multipleChoice_customAnswer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Custom option text"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='publicsign-contract'><code>publicSign</code> contract</h3>
+<ul>
+<li>On init (<code>POST /api/v1/survey-answers</code>) backend can return <code>x-public-sign</code> response header.</li>
+<li>Save this value in your client state.</li>
+<li>Send it in next requests as <code>publicSign</code>:
+
+<ul>
+<li><code>GET</code> endpoints: in query.</li>
+<li><code>PUT/POST</code> endpoints: in body.</li>
+</ul></li>
+<li>Recommended for iframe/public custom client integrations.</li>
+</ul>
+<h3 id='changestep-behavior'><code>changeStep</code> behavior</h3>
+<ul>
+<li><code>changeStep: false</code> (or omitted): save answer on current step.</li>
+<li><code>changeStep: true</code>: run step validation and move to next step.</li>
+<li>Required answers are enforced when moving step (<code>changeStep: true</code>).</li>
+</ul>
+<h3 id='step-constraints'>Step constraints</h3>
+<p>You can submit only <code>surveyItemId</code> values that belong to the current step returned by <code>GET /api/v1/survey-answers</code>.<br>
+If payload includes items from another step, backend returns <code>422 Unprocessable Entity</code>.</p>
+<h3 id='validation-error-examples'>Validation error examples</h3><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">400</span> <span class="ne">Bad Request</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"66f7dd902a1f66d5c3f5ef7f"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This field is required"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your request contain item that is not allowed on this survey step, please refresh page or contact support"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='text-date-input-notes'>Text/date input notes</h3>
+<ul>
+<li><code>text</code> + <code>input=email</code>: must be a valid email.</li>
+<li><code>text</code> + <code>input=number</code>: must be numeric (float/integer accepted by backend validation).</li>
+<li><code>text</code> + <code>input=date</code>: value is a string, format depends on <code>question.dateParams.type</code>:
+
+<ul>
+<li><code>date</code>: <code>YYYY-MM-DD</code></li>
+<li><code>dateAndTime</code>: <code>YYYY-MM-DD-HH:mm</code></li>
+<li><code>range</code>: <code>YYYY-MM-DD-YYYY-MM-DD</code></li>
+<li><code>rangeAndTime</code>: <code>YYYY-MM-DD-HH:mm-YYYY-MM-DD-HH:mm</code></li>
+</ul></li>
+</ul>
+<h3 id='minimal-end-to-end-flow'>Minimal end-to-end flow</h3>
+<ol>
+<li><code>GET /api/v1/surveys/:companyUrlName/:surveyUrlName</code></li>
+<li><code>POST /api/v1/survey-answers</code> (save <code>x-public-sign</code>)</li>
+<li><code>GET /api/v1/survey-answers</code> (render current step)</li>
+<li><code>PUT /api/v1/survey-answers</code> (<code>changeStep=true</code> to move next)</li>
+<li>Repeat steps 3-4 until <code>completed=true</code></li>
+<li>Optional: <code>GET /api/v1/survey-answers/result</code></li>
+</ol>
+<h2 id='step-5-step-navigation'>Step 5. Step navigation</h2><h3 id='5-1-go-one-step-back'>5.1 Go one step back</h3><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v1/survey-answers/step-back?surveyId=66f7d9db2a1f66d5c3f5e901&amp;lang=en&amp;publicSign=eyJhbGciOi...</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">https://go.screver.com</span>
+</code></pre><h3 id='http-request-5'>HTTP Request</h3>
+<p><code>GET /api/v1/survey-answers/step-back</code></p>
+<h3 id='5-2-restart-survey'>5.2 Restart survey</h3><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v1/survey-answers/restart-survey?surveyId=66f7d9db2a1f66d5c3f5e901&amp;lang=en&amp;dropAnswers=true&amp;publicSign=eyJhbGciOi...</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">https://go.screver.com</span>
+</code></pre><h3 id='http-request-6'>HTTP Request</h3>
+<p><code>GET /api/v1/survey-answers/restart-survey</code></p>
+<h3 id='query-parameters-both-endpoints'>Query Parameters (both endpoints)</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>surveyId</td>
+<td>string (ObjectId)</td>
+<td>Survey ID. Required when <code>token</code> is not provided.</td>
+<td>Conditionally</td>
+</tr>
+<tr>
+<td>token</td>
+<td>string</td>
+<td>Token for private flow.</td>
+<td>Conditionally</td>
+</tr>
+<tr>
+<td>publicSign</td>
+<td>string</td>
+<td>Public sign from init response header.</td>
+<td>Recommended</td>
+</tr>
+<tr>
+<td>lang</td>
+<td>string</td>
+<td>Language key.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>meta</td>
+<td>object</td>
+<td>Metadata object.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>dropAnswers</td>
+<td>boolean</td>
+<td>Restart endpoint only. Drops existing answers.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h2 id='step-6-optional-utility-endpoints'>Step 6. Optional utility endpoints</h2><h3 id='save-device-data'>Save device data</h3>
+<p><code>POST /api/v1/survey-answers/set-device</code></p>
+
+<p>Request body example:</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"surveyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"66f7d9db2a1f66d5c3f5e901"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"device-abc-123"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"deviceData"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="s2">"812px"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='get-answer-result'>Get answer result</h3>
+<p><code>GET /api/v1/survey-answers/result</code></p>
+
+<p>Typical query:</p>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v1/survey-answers/result?surveyId=66f7d9db2a1f66d5c3f5e901&amp;publicSign=eyJhbGciOi...</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">https://go.screver.com</span>
+</code></pre><h2 id='error-handling-recommendations'>Error handling recommendations</h2>
+<ul>
+<li><code>400</code> for request validation errors (Joi validation).</li>
+<li><code>422</code> for step/item consistency errors (answering items outside current step).</li>
+<li><code>404</code> for missing company/survey/resources.</li>
+<li>API may return business-level <code>message</code> in successful status when survey is unavailable by date or business rules.</li>
+<li>Always handle both HTTP status and response payload (<code>message</code>, validation error map) in your custom client.</li>
+</ul>
+<h2 id='troubleshooting'>Troubleshooting</h2>
+<ul>
+<li><code>404</code> on base survey endpoint: verify <code>companyUrlName</code> and <code>surveyUrlName</code>.</li>
+<li><code>400</code> on update: check <code>answer</code> value format for the specific <code>question.type</code>.</li>
+<li><code>422</code> on update: ensure submitted <code>surveyItemId</code> belongs to current step.</li>
+<li>Survey not available but request is successful: check response <code>message</code> (date/business rule restriction).</li>
+</ul>
