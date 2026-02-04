@@ -5,6 +5,12 @@ This section describes the public survey flow for building your own custom clien
 Public endpoints do not require OAuth token.  
 Base path: `/api/v1`
 
+This section focuses on the public runtime flow only:
+- `GET /api/v1/surveys/:companyUrlName/:surveyUrlName`
+- `POST/GET/PUT /api/v1/survey-answers...`
+
+`token` fields shown below are for private/invite flows and can be ignored for standard public-link integrations.
+
 ## Step 1. Load public survey base
 
 Use company and survey URL names to load public survey configuration before starting the answer flow.
@@ -101,7 +107,7 @@ x-public-sign: eyJhbGciOi...
 Parameter | Type | Description | Required |
 --------- | ------- | ----------- | -------- |
 surveyId | string (ObjectId) | Survey ID. Required when `token` is not provided. | Conditionally |
-token | string | Token for private survey flow. | Conditionally |
+token | string | Private/invite flow only. Not required for standard public links. | Conditionally |
 referrer | string | Referrer URL of embedding page/client. | No |
 assets | string or array | Asset ID or list of asset IDs. | No |
 lang | string | Language key from supported localization list. | No |
@@ -162,7 +168,7 @@ Content-Type: application/json
 Parameter | Type | Description | Required |
 --------- | ------- | ----------- | -------- |
 surveyId | string (ObjectId) | Survey ID. Required when `token` is not provided. | Conditionally |
-token | string | Token for private flow. | Conditionally |
+token | string | Private/invite flow only. Not required for standard public links. | Conditionally |
 publicSign | string | Public sign from init response header. | Recommended |
 lang | string | Language for rendered labels/content. | No |
 meta | object | Metadata object. | No |
@@ -232,7 +238,7 @@ Content-Type: application/json
 Parameter | Type | Description | Required |
 --------- | ------- | ----------- | -------- |
 surveyId | string (ObjectId) | Survey ID. Required when `token` is not provided. | Conditionally |
-token | string | Token for private flow. | Conditionally |
+token | string | Private/invite flow only. Not required for standard public links. | Conditionally |
 publicSign | string | Public sign from init response header. | Recommended |
 answer | object | Map by survey item id. Value can be string, number, array, matrix-object items, or `_customAnswer*` fields. | Yes |
 changeStep | boolean | `true` to move to next step, `false` or omitted for same-step save. | No |
@@ -241,7 +247,7 @@ meta | object | Metadata object. | No |
 executeMetaQuery | boolean | Enables backend meta processing logic. | No |
 useragent | object | Optional device flags (`isDesktop`, `isMobile`, `isTablet`). | No |
 
-## Answer object schema by question type
+### Step 4A. Answer object schema by question type
 
 `answer` is always a map where key is `surveyItemId`:
 
@@ -421,7 +427,7 @@ Host: https://go.screver.com
 Parameter | Type | Description | Required |
 --------- | ------- | ----------- | -------- |
 surveyId | string (ObjectId) | Survey ID. Required when `token` is not provided. | Conditionally |
-token | string | Token for private flow. | Conditionally |
+token | string | Private/invite flow only. Not required for standard public links. | Conditionally |
 publicSign | string | Public sign from init response header. | Recommended |
 lang | string | Language key. | No |
 meta | object | Metadata object. | No |
