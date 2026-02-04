@@ -44,17 +44,17 @@ Content-Type: application/json
 }
 ```
 
-### HTTP Request
+#### HTTP Request
 `GET /api/v1/surveys/:companyUrlName/:surveyUrlName`
 
-### Parameters
+#### Parameters
 
 Parameter | Type | Description | Required |
 --------- | ------- | ----------- | -------- |
 companyUrlName | string | Company URL slug. | Yes |
 surveyUrlName | string | Survey URL slug. | Yes |
 
-### Notes
+#### Notes
 - Returns `404` if company or survey does not exist.
 - If survey is outside active dates, response can still return survey object with `message` explaining availability status.
 
@@ -99,10 +99,10 @@ x-public-sign: eyJhbGciOi...
 }
 ```
 
-### HTTP Request
+#### HTTP Request
 `POST /api/v1/survey-answers`
 
-### Body Parameters
+#### Body Parameters
 
 Parameter | Type | Description | Required |
 --------- | ------- | ----------- | -------- |
@@ -117,7 +117,7 @@ reloadResult | boolean | Force result reload behavior. | No |
 targetId | string | Optional target identifier. | No |
 answer | object | Optional predefined answer map by survey item ID. | No |
 
-### Notes
+#### Notes
 - Save `x-public-sign` header and send it in next API calls as `publicSign` parameter.
 - Your client can safely call this endpoint multiple times to restore existing progress.
 
@@ -160,10 +160,10 @@ Content-Type: application/json
 }
 ```
 
-### HTTP Request
+#### HTTP Request
 `GET /api/v1/survey-answers`
 
-### Query Parameters
+#### Query Parameters
 
 Parameter | Type | Description | Required |
 --------- | ------- | ----------- | -------- |
@@ -230,10 +230,10 @@ Content-Type: application/json
 }
 ```
 
-### HTTP Request
+#### HTTP Request
 `PUT /api/v1/survey-answers`
 
-### Body Parameters
+#### Body Parameters
 
 Parameter | Type | Description | Required |
 --------- | ------- | ----------- | -------- |
@@ -264,7 +264,7 @@ How to get `surveyItemId`:
 - From Screver UI (survey editor).
 - From Bearer-protected survey endpoints in this documentation (v2 survey structure block).
 
-### Value format per `question.type`
+#### Value format per `question.type`
 
 Question type | `answer[surveyItemId]` format | Example
 --------- | ------- | ----------- |
@@ -285,7 +285,7 @@ checkboxMatrix | array of objects | `[{"row":"<gridRowId>","column":"<gridColumn
 multipleScale | array of objects | `[{"questionItem":"<questionItemId>","value":3}]`
 order | array of objects | `[{"questionItem":"<questionItemId>","value":1},{"questionItem":"<questionItemId2>","value":2}]`
 
-### Custom answer field
+#### Custom answer field
 
 For question types with an "Other / custom" option, send an additional key:
 
@@ -298,7 +298,7 @@ For question types with an "Other / custom" option, send an additional key:
 }
 ```
 
-### Exact answer examples by type
+#### Exact answer examples by type
 
 ```json
 {
@@ -333,7 +333,7 @@ For question types with an "Other / custom" option, send an additional key:
 }
 ```
 
-### `publicSign` contract
+#### `publicSign` contract
 
 - On init (`POST /api/v1/survey-answers`) backend can return `x-public-sign` response header.
 - Save this value in your client state.
@@ -342,18 +342,18 @@ For question types with an "Other / custom" option, send an additional key:
   - `PUT/POST` endpoints: in body.
 - Recommended for iframe/public custom client integrations.
 
-### `changeStep` behavior
+#### `changeStep` behavior
 
 - `changeStep: false` (or omitted): save answer on current step.
 - `changeStep: true`: run step validation and move to next step.
 - Required answers are enforced when moving step (`changeStep: true`).
 
-### Step constraints
+#### Step constraints
 
 You can submit only `surveyItemId` values that belong to the current step returned by `GET /api/v1/survey-answers`.  
 If payload includes items from another step, backend returns `422 Unprocessable Entity`.
 
-### Validation error examples
+#### Validation error examples
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -379,7 +379,7 @@ Content-Type: application/json
 }
 ```
 
-### Text/date input notes
+#### Text/date input notes
 
 - `text` + `input=email`: must be a valid email.
 - `text` + `input=number`: must be numeric (float/integer accepted by backend validation).
@@ -389,7 +389,7 @@ Content-Type: application/json
   - `range`: `YYYY-MM-DD-YYYY-MM-DD`
   - `rangeAndTime`: `YYYY-MM-DD-HH:mm-YYYY-MM-DD-HH:mm`
 
-### Minimal end-to-end flow
+#### Minimal end-to-end flow
 
 1. `GET /api/v1/surveys/:companyUrlName/:surveyUrlName`
 2. `POST /api/v1/survey-answers` (save `x-public-sign`)
@@ -408,7 +408,7 @@ Content-Type: application/json
 Host: https://go.screver.com
 ```
 
-### HTTP Request
+#### HTTP Request
 `GET /api/v1/survey-answers/step-back`
 
 ### 5.2 Restart survey
@@ -419,10 +419,10 @@ Content-Type: application/json
 Host: https://go.screver.com
 ```
 
-### HTTP Request
+#### HTTP Request
 `GET /api/v1/survey-answers/restart-survey`
 
-### Query Parameters (both endpoints)
+#### Query Parameters (both endpoints)
 
 Parameter | Type | Description | Required |
 --------- | ------- | ----------- | -------- |

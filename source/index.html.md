@@ -8,8 +8,9 @@ toc_footers:
   - <a href='https://go.screver.com'>Screver</a>
 
 includes:
-  - authentication.md
+  - screver.md
   - publicApi.md
+  - authentication.md
   - surveys.md
   - surveyItems.md
   - surveyResults.md
@@ -22,4 +23,6 @@ search: true
 
 # Introduction
 
-This is initial go.screver.com API documentation.
+This is the API documentation for go.screver.com.
+
+Start with `Screver`, then `Public API (Custom Client)`, then `Authentication (Bearer Token)`.
