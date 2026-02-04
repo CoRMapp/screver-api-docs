@@ -1,13 +1,16 @@
-<h1 id='authentication'>Authentication</h1>
-<blockquote>
-<p>To get an access token, send the following request:</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl --insecure --user <span class="s1">'clientid:clientsecret'</span> <span class="s1">'https://go.screver.com/oauth/token'</span> --data <span class="s1">'grant_type=client_credentials'</span>
+<h1 id='authentication-bearer-token'>Authentication (Bearer Token)</h1>
+<p>Use Bearer authentication for protected endpoints (primarily <code>/api/v2/*</code>).</p>
+
+<p>Public runtime endpoints (<code>/api/v1/surveys/...</code>, <code>/api/v1/survey-answers...</code>) do not require Bearer token by default.</p>
+<h2 id='1-request-access-token'>1. Request access token</h2><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/oauth/token</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">https://go.screver.com</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Basic &lt;base64(clientid:clientsecret)&gt;</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/x-www-form-urlencoded</span>
+
+grant_type=client_credentials
 </code></pre>
 <blockquote>
-<p>Make sure to replace <code>clientid</code> and <code>clientsecret</code> with your OAuth client id and secret.</p>
-
-<p>The above command returns structure like this:</p>
+<p>The above request returns:</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
@@ -16,13 +19,14 @@
   </span><span class="s2">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>To allow access to the API use access token.
-An OAuth client credentials request is used to obtain a token.
-To get your OAuth <code>client id</code> and <code>client secret</code> please contact us.
-The token can be used 24h.</p>
+<p>To get your OAuth <code>client id</code> and <code>client secret</code>, contact the Screver team.</p>
 
-<p><code>Authorization: Bearer u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</code></p>
-
+<p>Token lifetime is 24 hours.</p>
+<h2 id='2-use-token-in-api-requests'>2. Use token in API requests</h2><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/surveys?limit=5</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">https://go.screver.com</span>
+</code></pre>
 <aside class="notice">
 You must replace <code>u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</code> with the access token you received from the OAuth request.
 </aside>

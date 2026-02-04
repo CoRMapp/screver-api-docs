@@ -223,7 +223,7 @@
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
           </li>
           <li>
-            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+            <a href="#screver" class="toc-h1 toc-link" data-title="Screver">Screver</a>
           </li>
           <li>
             <a href="#public-api-custom-client" class="toc-h1 toc-link" data-title="Public API (Custom Client)">Public API (Custom Client)</a>
@@ -251,6 +251,17 @@
                   </li>
                   <li>
                     <a href="#troubleshooting" class="toc-h2 toc-link" data-title="Troubleshooting">Troubleshooting</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#authentication-bearer-token" class="toc-h1 toc-link" data-title="Authentication (Bearer Token)">Authentication (Bearer Token)</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#1-request-access-token" class="toc-h2 toc-link" data-title="1. Request access token">1. Request access token</a>
+                  </li>
+                  <li>
+                    <a href="#2-use-token-in-api-requests" class="toc-h2 toc-link" data-title="2. Use token in API requests">2. Use token in API requests</a>
                   </li>
               </ul>
           </li>
@@ -347,35 +358,26 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>This is initial go.screver.com API documentation.</p>
-<h1 id='authentication'>Authentication</h1>
-<blockquote>
-<p>To get an access token, send the following request:</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl --insecure --user <span class="s1">'clientid:clientsecret'</span> <span class="s1">'https://go.screver.com/oauth/token'</span> --data <span class="s1">'grant_type=client_credentials'</span>
-</code></pre>
-<blockquote>
-<p>Make sure to replace <code>clientid</code> and <code>clientsecret</code> with your OAuth client id and secret.</p>
+<p>This is the API documentation for go.screver.com.</p>
 
-<p>The above command returns structure like this:</p>
-</blockquote>
-<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
-<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
-</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bearer"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>To allow access to the API use access token.
-An OAuth client credentials request is used to obtain a token.
-To get your OAuth <code>client id</code> and <code>client secret</code> please contact us.
-The token can be used 24h.</p>
+<p>Start with <code>Screver</code>, then <code>Public API (Custom Client)</code>, then <code>Authentication (Bearer Token)</code>.</p>
+<h1 id='screver'>Screver</h1>
+<p>Screver is a survey platform for building, distributing, and analyzing customer feedback flows.</p>
 
-<p><code>Authorization: Bearer u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</code></p>
+<p>This documentation is split into two parts:</p>
 
-<aside class="notice">
-You must replace <code>u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</code> with the access token you received from the OAuth request.
-</aside>
+<ul>
+<li>Public runtime API (<code>/api/v1</code>) for custom clients (web/mobile/embed) that render and submit surveys.</li>
+<li>Bearer-protected API (<code>/api/v2</code>) for management, configuration, and integrations.</li>
+</ul>
+
+<p>Recommended reading order:</p>
+
+<ol>
+<li>Public API (Custom Client)</li>
+<li>Authentication (Bearer Token)</li>
+<li>Other Bearer-protected sections (<code>Surveys</code>, <code>Survey Items</code>, <code>Survey Results</code>, etc.)</li>
+</ol>
 <h1 id='public-api-custom-client'>Public API (Custom Client)</h1>
 <p>This section describes the public survey flow for building your own custom client (web, mobile, kiosk, or backend integration).</p>
 
@@ -411,9 +413,9 @@ Base path: <code>/api/v1</code></p>
   </span><span class="s2">"metaVariablesList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"userId"</span><span class="p">,</span><span class="w"> </span><span class="s2">"campaignId"</span><span class="p">],</span><span class="w">
   </span><span class="s2">"globalMeta"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"userId"</span><span class="p">,</span><span class="w"> </span><span class="s2">"campaignId"</span><span class="p">,</span><span class="w"> </span><span class="s2">"source"</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='http-request'>HTTP Request</h3>
+</span></code></pre><h4 id='http-request'>HTTP Request</h4>
 <p><code>GET /api/v1/surveys/:companyUrlName/:surveyUrlName</code></p>
-<h3 id='parameters'>Parameters</h3>
+<h4 id='parameters'>Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -435,7 +437,7 @@ Base path: <code>/api/v1</code></p>
 <td>Yes</td>
 </tr>
 </tbody></table>
-<h3 id='notes'>Notes</h3>
+<h4 id='notes'>Notes</h4>
 <ul>
 <li>Returns <code>404</code> if company or survey does not exist.</li>
 <li>If survey is outside active dates, response can still return survey object with <code>message</code> explaining availability status.</li>
@@ -469,9 +471,9 @@ This call is required before requesting current step.</p>
   </span><span class="s2">"surveyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"66f7d9db2a1f66d5c3f5e901"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"completed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='http-request-2'>HTTP Request</h3>
+</span></code></pre><h4 id='http-request-2'>HTTP Request</h4>
 <p><code>POST /api/v1/survey-answers</code></p>
-<h3 id='body-parameters'>Body Parameters</h3>
+<h4 id='body-parameters'>Body Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -541,7 +543,7 @@ This call is required before requesting current step.</p>
 <td>No</td>
 </tr>
 </tbody></table>
-<h3 id='notes-2'>Notes</h3>
+<h4 id='notes-2'>Notes</h4>
 <ul>
 <li>Save <code>x-public-sign</code> header and send it in next API calls as <code>publicSign</code> parameter.</li>
 <li>Your client can safely call this endpoint multiple times to restore existing progress.</li>
@@ -576,9 +578,9 @@ This call is required before requesting current step.</p>
   </span><span class="s2">"html"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"completed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='http-request-3'>HTTP Request</h3>
+</span></code></pre><h4 id='http-request-3'>HTTP Request</h4>
 <p><code>GET /api/v1/survey-answers</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+<h4 id='query-parameters'>Query Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -678,9 +680,9 @@ This call is required before requesting current step.</p>
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"u-123"</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="s2">"completed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='http-request-4'>HTTP Request</h3>
+</span></code></pre><h4 id='http-request-4'>HTTP Request</h4>
 <p><code>PUT /api/v1/survey-answers</code></p>
-<h3 id='body-parameters-2'>Body Parameters</h3>
+<h4 id='body-parameters-2'>Body Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -756,7 +758,7 @@ This call is required before requesting current step.</p>
 <p>How to get <code>surveyItemId</code>:
 - From Screver UI (survey editor).
 - From Bearer-protected survey endpoints in this documentation (v2 survey structure block).</p>
-<h3 id='value-format-per-question-type'>Value format per <code>question.type</code></h3>
+<h4 id='value-format-per-question-type'>Value format per <code>question.type</code></h4>
 <table><thead>
 <tr>
 <th>Question type</th>
@@ -845,7 +847,7 @@ This call is required before requesting current step.</p>
 <td><code>[{&quot;questionItem&quot;:&quot;&lt;questionItemId&gt;&quot;,&quot;value&quot;:1},{&quot;questionItem&quot;:&quot;&lt;questionItemId2&gt;&quot;,&quot;value&quot;:2}]</code></td>
 </tr>
 </tbody></table>
-<h3 id='custom-answer-field'>Custom answer field</h3>
+<h4 id='custom-answer-field'>Custom answer field</h4>
 <p>For question types with an &quot;Other / custom&quot; option, send an additional key:</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"answer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -853,7 +855,7 @@ This call is required before requesting current step.</p>
     </span><span class="s2">"66f7dd222a1f66d5c3f5ef03_customAnswer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My custom option"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='exact-answer-examples-by-type'>Exact answer examples by type</h3><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+</span></code></pre><h4 id='exact-answer-examples-by-type'>Exact answer examples by type</h4><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"answer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"surveyItemId_multipleChoice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"questionItemId"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"surveyItemId_dropdown"</span><span class="p">:</span><span class="w"> </span><span class="s2">"questionItemId"</span><span class="p">,</span><span class="w">
@@ -883,7 +885,7 @@ This call is required before requesting current step.</p>
     </span><span class="s2">"surveyItemId_multipleChoice_customAnswer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Custom option text"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='publicsign-contract'><code>publicSign</code> contract</h3>
+</span></code></pre><h4 id='publicsign-contract'><code>publicSign</code> contract</h4>
 <ul>
 <li>On init (<code>POST /api/v1/survey-answers</code>) backend can return <code>x-public-sign</code> response header.</li>
 <li>Save this value in your client state.</li>
@@ -895,16 +897,16 @@ This call is required before requesting current step.</p>
 </ul></li>
 <li>Recommended for iframe/public custom client integrations.</li>
 </ul>
-<h3 id='changestep-behavior'><code>changeStep</code> behavior</h3>
+<h4 id='changestep-behavior'><code>changeStep</code> behavior</h4>
 <ul>
 <li><code>changeStep: false</code> (or omitted): save answer on current step.</li>
 <li><code>changeStep: true</code>: run step validation and move to next step.</li>
 <li>Required answers are enforced when moving step (<code>changeStep: true</code>).</li>
 </ul>
-<h3 id='step-constraints'>Step constraints</h3>
+<h4 id='step-constraints'>Step constraints</h4>
 <p>You can submit only <code>surveyItemId</code> values that belong to the current step returned by <code>GET /api/v1/survey-answers</code>.<br>
 If payload includes items from another step, backend returns <code>422 Unprocessable Entity</code>.</p>
-<h3 id='validation-error-examples'>Validation error examples</h3><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">400</span> <span class="ne">Bad Request</span>
+<h4 id='validation-error-examples'>Validation error examples</h4><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">400</span> <span class="ne">Bad Request</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -916,7 +918,7 @@ If payload includes items from another step, backend returns <code>422 Unprocess
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your request contain item that is not allowed on this survey step, please refresh page or contact support"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='text-date-input-notes'>Text/date input notes</h3>
+</span></code></pre><h4 id='text-date-input-notes'>Text/date input notes</h4>
 <ul>
 <li><code>text</code> + <code>input=email</code>: must be a valid email.</li>
 <li><code>text</code> + <code>input=number</code>: must be numeric (float/integer accepted by backend validation).</li>
@@ -929,7 +931,7 @@ If payload includes items from another step, backend returns <code>422 Unprocess
 <li><code>rangeAndTime</code>: <code>YYYY-MM-DD-HH:mm-YYYY-MM-DD-HH:mm</code></li>
 </ul></li>
 </ul>
-<h3 id='minimal-end-to-end-flow'>Minimal end-to-end flow</h3>
+<h4 id='minimal-end-to-end-flow'>Minimal end-to-end flow</h4>
 <ol>
 <li><code>GET /api/v1/surveys/:companyUrlName/:surveyUrlName</code></li>
 <li><code>POST /api/v1/survey-answers</code> (save <code>x-public-sign</code>)</li>
@@ -941,14 +943,14 @@ If payload includes items from another step, backend returns <code>422 Unprocess
 <h2 id='step-5-step-navigation'>Step 5. Step navigation</h2><h3 id='5-1-go-one-step-back'>5.1 Go one step back</h3><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v1/survey-answers/step-back?surveyId=66f7d9db2a1f66d5c3f5e901&amp;lang=en&amp;publicSign=eyJhbGciOi...</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">https://go.screver.com</span>
-</code></pre><h3 id='http-request-5'>HTTP Request</h3>
+</code></pre><h4 id='http-request-5'>HTTP Request</h4>
 <p><code>GET /api/v1/survey-answers/step-back</code></p>
 <h3 id='5-2-restart-survey'>5.2 Restart survey</h3><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v1/survey-answers/restart-survey?surveyId=66f7d9db2a1f66d5c3f5e901&amp;lang=en&amp;dropAnswers=true&amp;publicSign=eyJhbGciOi...</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">https://go.screver.com</span>
-</code></pre><h3 id='http-request-6'>HTTP Request</h3>
+</code></pre><h4 id='http-request-6'>HTTP Request</h4>
 <p><code>GET /api/v1/survey-answers/restart-survey</code></p>
-<h3 id='query-parameters-both-endpoints'>Query Parameters (both endpoints)</h3>
+<h4 id='query-parameters-both-endpoints'>Query Parameters (both endpoints)</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1026,6 +1028,38 @@ If payload includes items from another step, backend returns <code>422 Unprocess
 <li><code>422</code> on update: ensure submitted <code>surveyItemId</code> belongs to current step.</li>
 <li>Survey not available but request is successful: check response <code>message</code> (date/business rule restriction).</li>
 </ul>
+<h1 id='authentication-bearer-token'>Authentication (Bearer Token)</h1>
+<p>Use Bearer authentication for protected endpoints (primarily <code>/api/v2/*</code>).</p>
+
+<p>Public runtime endpoints (<code>/api/v1/surveys/...</code>, <code>/api/v1/survey-answers...</code>) do not require Bearer token by default.</p>
+<h2 id='1-request-access-token'>1. Request access token</h2><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/oauth/token</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">https://go.screver.com</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Basic &lt;base64(clientid:clientsecret)&gt;</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/x-www-form-urlencoded</span>
+
+grant_type=client_credentials
+</code></pre>
+<blockquote>
+<p>The above request returns:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bearer"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>To get your OAuth <code>client id</code> and <code>client secret</code>, contact the Screver team.</p>
+
+<p>Token lifetime is 24 hours.</p>
+<h2 id='2-use-token-in-api-requests'>2. Use token in API requests</h2><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/surveys?limit=5</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">https://go.screver.com</span>
+</code></pre>
+<aside class="notice">
+You must replace <code>u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</code> with the access token you received from the OAuth request.
+</aside>
 <h1 id='surveys'>Surveys</h1><h2 id='get-list-of-surveys-with-base-data'>Get list of surveys with base data.</h2><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/surveys?limit=5</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer u8ptxAd2hJ3aRjtgwwmUqqkNpcMOYxf3</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>

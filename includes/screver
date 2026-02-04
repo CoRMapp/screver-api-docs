@@ -1,0 +1,17 @@
+<h1 id='screver'>Screver</h1>
+<p>Screver is a survey platform for building, distributing, and analyzing customer feedback flows.</p>
+
+<p>This documentation is split into two parts:</p>
+
+<ul>
+<li>Public runtime API (<code>/api/v1</code>) for custom clients (web/mobile/embed) that render and submit surveys.</li>
+<li>Bearer-protected API (<code>/api/v2</code>) for management, configuration, and integrations.</li>
+</ul>
+
+<p>Recommended reading order:</p>
+
+<ol>
+<li>Public API (Custom Client)</li>
+<li>Authentication (Bearer Token)</li>
+<li>Other Bearer-protected sections (<code>Surveys</code>, <code>Survey Items</code>, <code>Survey Results</code>, etc.)</li>
+</ol>

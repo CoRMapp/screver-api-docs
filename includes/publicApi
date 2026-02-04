@@ -33,9 +33,9 @@ Base path: <code>/api/v1</code></p>
   </span><span class="s2">"metaVariablesList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"userId"</span><span class="p">,</span><span class="w"> </span><span class="s2">"campaignId"</span><span class="p">],</span><span class="w">
   </span><span class="s2">"globalMeta"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"userId"</span><span class="p">,</span><span class="w"> </span><span class="s2">"campaignId"</span><span class="p">,</span><span class="w"> </span><span class="s2">"source"</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='http-request'>HTTP Request</h3>
+</span></code></pre><h4 id='http-request'>HTTP Request</h4>
 <p><code>GET /api/v1/surveys/:companyUrlName/:surveyUrlName</code></p>
-<h3 id='parameters'>Parameters</h3>
+<h4 id='parameters'>Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -57,7 +57,7 @@ Base path: <code>/api/v1</code></p>
 <td>Yes</td>
 </tr>
 </tbody></table>
-<h3 id='notes'>Notes</h3>
+<h4 id='notes'>Notes</h4>
 <ul>
 <li>Returns <code>404</code> if company or survey does not exist.</li>
 <li>If survey is outside active dates, response can still return survey object with <code>message</code> explaining availability status.</li>
@@ -91,9 +91,9 @@ This call is required before requesting current step.</p>
   </span><span class="s2">"surveyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"66f7d9db2a1f66d5c3f5e901"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"completed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='http-request-2'>HTTP Request</h3>
+</span></code></pre><h4 id='http-request-2'>HTTP Request</h4>
 <p><code>POST /api/v1/survey-answers</code></p>
-<h3 id='body-parameters'>Body Parameters</h3>
+<h4 id='body-parameters'>Body Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -163,7 +163,7 @@ This call is required before requesting current step.</p>
 <td>No</td>
 </tr>
 </tbody></table>
-<h3 id='notes-2'>Notes</h3>
+<h4 id='notes-2'>Notes</h4>
 <ul>
 <li>Save <code>x-public-sign</code> header and send it in next API calls as <code>publicSign</code> parameter.</li>
 <li>Your client can safely call this endpoint multiple times to restore existing progress.</li>
@@ -198,9 +198,9 @@ This call is required before requesting current step.</p>
   </span><span class="s2">"html"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"completed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='http-request-3'>HTTP Request</h3>
+</span></code></pre><h4 id='http-request-3'>HTTP Request</h4>
 <p><code>GET /api/v1/survey-answers</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+<h4 id='query-parameters'>Query Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -300,9 +300,9 @@ This call is required before requesting current step.</p>
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"u-123"</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="s2">"completed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='http-request-4'>HTTP Request</h3>
+</span></code></pre><h4 id='http-request-4'>HTTP Request</h4>
 <p><code>PUT /api/v1/survey-answers</code></p>
-<h3 id='body-parameters-2'>Body Parameters</h3>
+<h4 id='body-parameters-2'>Body Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -378,7 +378,7 @@ This call is required before requesting current step.</p>
 <p>How to get <code>surveyItemId</code>:
 - From Screver UI (survey editor).
 - From Bearer-protected survey endpoints in this documentation (v2 survey structure block).</p>
-<h3 id='value-format-per-question-type'>Value format per <code>question.type</code></h3>
+<h4 id='value-format-per-question-type'>Value format per <code>question.type</code></h4>
 <table><thead>
 <tr>
 <th>Question type</th>
@@ -467,7 +467,7 @@ This call is required before requesting current step.</p>
 <td><code>[{&quot;questionItem&quot;:&quot;&lt;questionItemId&gt;&quot;,&quot;value&quot;:1},{&quot;questionItem&quot;:&quot;&lt;questionItemId2&gt;&quot;,&quot;value&quot;:2}]</code></td>
 </tr>
 </tbody></table>
-<h3 id='custom-answer-field'>Custom answer field</h3>
+<h4 id='custom-answer-field'>Custom answer field</h4>
 <p>For question types with an &quot;Other / custom&quot; option, send an additional key:</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"answer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -475,7 +475,7 @@ This call is required before requesting current step.</p>
     </span><span class="s2">"66f7dd222a1f66d5c3f5ef03_customAnswer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My custom option"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='exact-answer-examples-by-type'>Exact answer examples by type</h3><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+</span></code></pre><h4 id='exact-answer-examples-by-type'>Exact answer examples by type</h4><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"answer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"surveyItemId_multipleChoice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"questionItemId"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"surveyItemId_dropdown"</span><span class="p">:</span><span class="w"> </span><span class="s2">"questionItemId"</span><span class="p">,</span><span class="w">
@@ -505,7 +505,7 @@ This call is required before requesting current step.</p>
     </span><span class="s2">"surveyItemId_multipleChoice_customAnswer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Custom option text"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='publicsign-contract'><code>publicSign</code> contract</h3>
+</span></code></pre><h4 id='publicsign-contract'><code>publicSign</code> contract</h4>
 <ul>
 <li>On init (<code>POST /api/v1/survey-answers</code>) backend can return <code>x-public-sign</code> response header.</li>
 <li>Save this value in your client state.</li>
@@ -517,16 +517,16 @@ This call is required before requesting current step.</p>
 </ul></li>
 <li>Recommended for iframe/public custom client integrations.</li>
 </ul>
-<h3 id='changestep-behavior'><code>changeStep</code> behavior</h3>
+<h4 id='changestep-behavior'><code>changeStep</code> behavior</h4>
 <ul>
 <li><code>changeStep: false</code> (or omitted): save answer on current step.</li>
 <li><code>changeStep: true</code>: run step validation and move to next step.</li>
 <li>Required answers are enforced when moving step (<code>changeStep: true</code>).</li>
 </ul>
-<h3 id='step-constraints'>Step constraints</h3>
+<h4 id='step-constraints'>Step constraints</h4>
 <p>You can submit only <code>surveyItemId</code> values that belong to the current step returned by <code>GET /api/v1/survey-answers</code>.<br>
 If payload includes items from another step, backend returns <code>422 Unprocessable Entity</code>.</p>
-<h3 id='validation-error-examples'>Validation error examples</h3><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">400</span> <span class="ne">Bad Request</span>
+<h4 id='validation-error-examples'>Validation error examples</h4><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">400</span> <span class="ne">Bad Request</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -538,7 +538,7 @@ If payload includes items from another step, backend returns <code>422 Unprocess
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your request contain item that is not allowed on this survey step, please refresh page or contact support"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='text-date-input-notes'>Text/date input notes</h3>
+</span></code></pre><h4 id='text-date-input-notes'>Text/date input notes</h4>
 <ul>
 <li><code>text</code> + <code>input=email</code>: must be a valid email.</li>
 <li><code>text</code> + <code>input=number</code>: must be numeric (float/integer accepted by backend validation).</li>
@@ -551,7 +551,7 @@ If payload includes items from another step, backend returns <code>422 Unprocess
 <li><code>rangeAndTime</code>: <code>YYYY-MM-DD-HH:mm-YYYY-MM-DD-HH:mm</code></li>
 </ul></li>
 </ul>
-<h3 id='minimal-end-to-end-flow'>Minimal end-to-end flow</h3>
+<h4 id='minimal-end-to-end-flow'>Minimal end-to-end flow</h4>
 <ol>
 <li><code>GET /api/v1/surveys/:companyUrlName/:surveyUrlName</code></li>
 <li><code>POST /api/v1/survey-answers</code> (save <code>x-public-sign</code>)</li>
@@ -563,14 +563,14 @@ If payload includes items from another step, backend returns <code>422 Unprocess
 <h2 id='step-5-step-navigation'>Step 5. Step navigation</h2><h3 id='5-1-go-one-step-back'>5.1 Go one step back</h3><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v1/survey-answers/step-back?surveyId=66f7d9db2a1f66d5c3f5e901&amp;lang=en&amp;publicSign=eyJhbGciOi...</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">https://go.screver.com</span>
-</code></pre><h3 id='http-request-5'>HTTP Request</h3>
+</code></pre><h4 id='http-request-5'>HTTP Request</h4>
 <p><code>GET /api/v1/survey-answers/step-back</code></p>
 <h3 id='5-2-restart-survey'>5.2 Restart survey</h3><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v1/survey-answers/restart-survey?surveyId=66f7d9db2a1f66d5c3f5e901&amp;lang=en&amp;dropAnswers=true&amp;publicSign=eyJhbGciOi...</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">https://go.screver.com</span>
-</code></pre><h3 id='http-request-6'>HTTP Request</h3>
+</code></pre><h4 id='http-request-6'>HTTP Request</h4>
 <p><code>GET /api/v1/survey-answers/restart-survey</code></p>
-<h3 id='query-parameters-both-endpoints'>Query Parameters (both endpoints)</h3>
+<h4 id='query-parameters-both-endpoints'>Query Parameters (both endpoints)</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
